@@ -24,3 +24,5 @@ override.tf.json
 # Аналогично 2
 .terraformrc
 terraform.rc
+
+NEW LINE 09.03.23
