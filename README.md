@@ -24,3 +24,5 @@ override.tf.json
 # Аналогично 2
 .terraformrc
 terraform.rc
+
+NEW line by pycharm main branch
