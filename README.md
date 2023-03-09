@@ -26,3 +26,5 @@ override.tf.json
 terraform.rc
 
 NEW line by pycharm main branch
+
+new line fix2
