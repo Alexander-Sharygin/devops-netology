@@ -28,3 +28,6 @@ terraform.rc
 NEW line by pycharm main branch
 
 new line fix2
+
+new line fix2
+
