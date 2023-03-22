@@ -88,7 +88,10 @@ o pipefail  - без этой опции e не работает с конвее
 
 9. Используя `-o stat` для `ps`, определите, какой наиболее часто встречающийся статус у процессов в системе. В `man ps` изучите (`/PROCESS STATE CODES`), что значат дополнительные к основной заглавной букве статуса процессов. Его можно не учитывать при расчёте (считать S, Ss или Ssl равнозначными).  
 **Наиболее часто встречающийся статус S
-ps ax -o stat |grep -c D;ps ax -o stat |grep -c I;ps ax -o stat |grep -c R;ps ax -o stat |grep -c S;ps ax -o stat |grep -c T;ps ax -o stat |grep -c t;ps ax -o stat |grep -c W;ps ax -o stat |grep -c X;ps ax -o stat |grep -c Z**
+ps -Ao stat  | cut -c1-1 | sort | uniq -c | sort -h  
+      1 R  
+     46 I  
+     62 S**
 ```commandline
 PROCESS STATE CODES
        Here are the different values that the s, stat and state output specifiers (header "STAT" or "S") will display to describe the state of a process:
