@@ -92,7 +92,7 @@ ps -Ao stat  | cut -c1-1 | sort | uniq -c | sort -h
       1 R  
      46 I  
      62 S**
-```commandline
+```commandline 
 PROCESS STATE CODES
        Here are the different values that the s, stat and state output specifiers (header "STAT" or "S") will display to describe the state of a process:
 
