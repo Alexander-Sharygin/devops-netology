@@ -60,7 +60,8 @@ PID    COMM               FD ERR PATH
 
 6. Какой системный вызов использует `uname -a`? Приведите цитату из man по этому системному вызову, где описывается альтернативное местоположение в `/proc` и где можно узнать версию ядра и релиз ОС.
 
-**proc/sys/kernel/{ostype, hostname, osrelease, version, domainname}.**
+**proc/sys/kernel/{ostype, hostname, osrelease, version, domainname}.**  
+
 7. Чем отличается последовательность команд через `;` и через `&&` в bash? Например:
 
     ```bash
