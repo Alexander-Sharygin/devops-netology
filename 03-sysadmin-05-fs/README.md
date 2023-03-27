@@ -163,7 +163,9 @@ md0 : active raid1 sdc1[1] sdb1[0]
       
 unused devices: <none>
 ```
-
+```bash
+sudo mdadm --detail --scan  | awk '/ARRAY/ {print}' >> /etc/mdadm/mdadm.conf
+```
 8. Создайте два независимых PV на получившихся md-устройствах.
 ```bash
 vagrant@sysadm-fs:~$ sudo pvcreate /dev/md0; sudo pvcreate /dev/md1
@@ -171,39 +173,80 @@ Physical volume "/dev/md0" successfully created.
 Physical volume "/dev/md1" successfully created.
 ```
 9. Создайте общую volume-group на этих двух PV.
-
-1. Создайте LV размером 100 Мб, указав его расположение на PV с RAID0.
-
-1. Создайте `mkfs.ext4` ФС на получившемся LV.
-
-1. Смонтируйте этот раздел в любую директорию, например, `/tmp/new`.
-
-1. Поместите туда тестовый файл, например, `wget https://mirror.yandex.ru/ubuntu/ls-lR.gz -O /tmp/new/test.gz`.
-
-1. Прикрепите вывод `lsblk`.
-
-1. Протестируйте целостность файла:
+````bash
+sudo vgcreate vg00 /dev/md0 /dev/md1
+````
+10. Создайте LV размером 100 Мб, указав его расположение на PV с RAID0.
+````bash
+sudo lvcreate -L 100M vg00 /dev/md0
+````
+11. Создайте `mkfs.ext4` ФС на получившемся LV.
+````bash
+sudo mkfs.ext4 /dev/vg00/lvol0 
+````
+12. Смонтируйте этот раздел в любую директорию, например, `/tmp/new`.
+````bash
+mkdir /tmp/lvol0
+sudo mount /dev/vg00/lvol0 /tmp/lvol0/
+````
+13. Поместите туда тестовый файл, например, `wget https://mirror.yandex.ru/ubuntu/ls-lR.gz -O /tmp/new/test.gz`.  
+````bash
+wget https://mirror.yandex.ru/ubuntu/ls-lR.gz -O /tmp/new/test.gz`.
+`````
+14. Прикрепите вывод `lsblk`.
+````bash
+NAME                      MAJ:MIN RM  SIZE RO TYPE  MOUNTPOINT
+loop0                       7:0    0 63.3M  1 loop  /snap/core20/1852
+loop1                       7:1    0 67.8M  1 loop  /snap/lxd/22753
+loop2                       7:2    0 49.9M  1 loop  /snap/snapd/18596
+loop3                       7:3    0   62M  1 loop  /snap/core20/1611
+loop4                       7:4    0 91.9M  1 loop  /snap/lxd/24061
+sda                         8:0    0   64G  0 disk  
+├─sda1                      8:1    0    1M  0 part  
+├─sda2                      8:2    0    2G  0 part  /boot
+└─sda3                      8:3    0   62G  0 part  
+  └─ubuntu--vg-ubuntu--lv 253:0    0   31G  0 lvm   /
+sdb                         8:16   0  2.5G  0 disk  
+├─sdb1                      8:17   0    2G  0 part  
+│ └─md1                     9:1    0    2G  0 raid1 
+└─sdb2                      8:18   0  511M  0 part  
+  └─md0                     9:0    0 1018M  0 raid0 
+    └─vg00-lvol0          253:1    0  100M  0 lvm   /tmp/lvol0
+sdc                         8:32   0  2.5G  0 disk  
+├─sdc1                      8:33   0    2G  0 part  
+│ └─md1                     9:1    0    2G  0 raid1 
+└─sdc2                      8:34   0  511M  0 part  
+  └─md0                     9:0    0 1018M  0 raid0 
+    └─vg00-lvol0          253:1    0  100M  0 lvm   /tmp/lvol0
+````
+15. Протестируйте целостность файла:
 
     ```bash
     root@vagrant:~# gzip -t /tmp/new/test.gz
     root@vagrant:~# echo $?
     0
     ```
-
-1. Используя pvmove, переместите содержимое PV с RAID0 на RAID1.
-
-1. Сделайте `--fail` на устройство в вашем RAID1 md.
-
-1. Подтвердите выводом `dmesg`, что RAID1 работает в деградированном состоянии.
-
-1. Протестируйте целостность файла — он должен быть доступен несмотря на «сбойный» диск:
+**Выполнено**  
+16. Используя pvmove, переместите содержимое PV с RAID0 на RAID1.
+```bash
+sudo pvmove /dev/md0 /dev/md1
+```
+17. Сделайте `--fail` на устройство в вашем RAID1 md.
+````bash
+sudo mdadm /dev/md1 --fail /dev/sdb1 
+````
+18. Подтвердите выводом `dmesg`, что RAID1 работает в деградированном состоянии.
+````bash
+md/raid1:md1: Disk failure on sdb1, disabling device.
+md/raid1:md1: Operation continuing on 1 devices.
+ ````
+19. Протестируйте целостность файла — он должен быть доступен несмотря на «сбойный» диск:
 
     ```bash
     root@vagrant:~# gzip -t /tmp/new/test.gz
     root@vagrant:~# echo $?
     0
     ```
-
-1. Погасите тестовый хост — `vagrant destroy`.
- 
-*В качестве решения пришлите ответы на вопросы и опишите, как они были получены.*
+**Выполнено**
+20. Погасите тестовый хост — `vagrant destroy`.
+**Выполнено**
