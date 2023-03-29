@@ -144,4 +144,4 @@ root          13  0.0  0.1  10612  3328 pts/1    R+   19:06   0:00 ps aux
 
 fork bomb бесконечно создает процессы копии
 [2465.587612] cgroup: fork rejected by pids controller in /user.slice/user-1000.slice/session-3.scope
-стабилизировалось по лимиту кол-ва процессов
+стабилизировалось по лимиту кол-ва процессов 
