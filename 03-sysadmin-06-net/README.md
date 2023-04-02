@@ -28,8 +28,9 @@ HOST: stackoverflow.com
  - приложите скриншот консоли браузера в ответ.  
 **307 Internal Redirect  
 2.09сек**  
-ДОБАВИТЬ СКРИНШОТ
+![](https://github.com/Alexander-Sharygin/devops-netology/blob/main/03-sysadmin-06-net/Screenshot%20from%202023-04-02%2010-49-53.png)
 
+ - 
 **Шаг 3.** Какой IP-адрес у вас в интернете?  
 **curl ifconfig.me  
 88.86.х.х**  
@@ -70,7 +71,7 @@ traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
 ````
 **Шаг 6.** Повторите задание 5 в утилите `mtr`. На каком участке наибольшая задержка — delay?  
 **10.10.4.93 worst 231** 
-Добавить скриншот  
+![](https://github.com/Alexander-Sharygin/devops-netology/blob/main/03-sysadmin-06-net/Screenshot%20from%202023-04-02%2010-49-53.png)
 
 **Шаг 7.** Какие DNS-сервера отвечают за доменное имя dns.google? Какие A-записи? Воспользуйтесь утилитой `dig`.
 ````text
