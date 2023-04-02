@@ -77,7 +77,7 @@ traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
 
 **10.10.4.93 worst 231**  
 ![](https://github.com/Alexander-Sharygin/devops-netology/blob/main/03-sysadmin-06-net/Screenshot%20from%202023-04-02%2010-49-53.png)
-
+ 
 **Шаг 7.** Какие DNS-сервера отвечают за доменное имя dns.google? Какие A-записи? Воспользуйтесь утилитой `dig`.
 ````text
 root@sysadm-fs:~# dig dns.google NS +noall +answer
