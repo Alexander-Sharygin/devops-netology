@@ -68,7 +68,7 @@ traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
 22  * * *
 23  * * *
 24  dns.google (8.8.8.8) [AS15169/AS263411]  43.656 ms  42.785 ms  45.204 ms
-````
+```` 
 **Шаг 6.** Повторите задание 5 в утилите `mtr`. На каком участке наибольшая задержка — delay?  
 **10.10.4.93 worst 231** 
 ![](https://github.com/Alexander-Sharygin/devops-netology/blob/main/03-sysadmin-06-net/Screenshot%20from%202023-04-02%2010-49-53.png)
