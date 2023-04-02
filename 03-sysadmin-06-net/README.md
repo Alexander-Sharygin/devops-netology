@@ -28,7 +28,7 @@ HOST: stackoverflow.com
  - приложите скриншот консоли браузера в ответ.  
 **307 Internal Redirect  
 2.09сек**  
-![](https://github.com/Alexander-Sharygin/devops-netology/blob/main/03-sysadmin-06-net/Screenshot%20from%202023-04-02%2010-49-53.png)
+![](https://github.com/Alexander-Sharygin/devops-netology/blob/main/03-sysadmin-06-net/Screenshot%20from%202023-04-02%2010-26-02.png)
 
  - 
 **Шаг 3.** Какой IP-адрес у вас в интернете?  
