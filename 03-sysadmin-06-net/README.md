@@ -75,7 +75,7 @@ traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
 ````  
 **Шаг 6.** Повторите задание 5 в утилите `mtr`. На каком участке наибольшая задержка — delay?  
 
-**10.10.4.93 worst 231**  
+**10.10.4.93 worst 222**  
 ![](https://github.com/Alexander-Sharygin/devops-netology/blob/main/03-sysadmin-06-net/Screenshot%20from%202023-04-02%2010-49-53.png)
  
 **Шаг 7.** Какие DNS-сервера отвечают за доменное имя dns.google? Какие A-записи? Воспользуйтесь утилитой `dig`.
