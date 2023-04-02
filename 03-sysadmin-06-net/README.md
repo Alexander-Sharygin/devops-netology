@@ -16,7 +16,7 @@ HOST: stackoverflow.com
 [press enter]
 ```
 *В ответе укажите полученный HTTP-код и поясните, что он означает.*  
-**HTTP/1.1 403 Forbidden**
+*HTTP/1.1 403 Forbidden*
 
 **Шаг 2.** Повторите задание 1 в браузере, используя консоль разработчика F12:
 
@@ -26,20 +26,19 @@ HOST: stackoverflow.com
  - укажите в ответе полученный HTTP-код;
  - проверьте время загрузки страницы и определите, какой запрос обрабатывался дольше всего;
  - приложите скриншот консоли браузера в ответ.  
-**307 Internal Redirect  
-2.09сек**  
+*307 Internal Redirect  
+2.09сек*  
 ![](https://github.com/Alexander-Sharygin/devops-netology/blob/main/03-sysadmin-06-net/Screenshot%20from%202023-04-02%2010-26-02.png)
 
- - 
 **Шаг 3.** Какой IP-адрес у вас в интернете?  
-**curl ifconfig.me  
-88.86.х.х**  
+*curl ifconfig.me  
+88.86.х.х*  
 
 **Шаг 4.** Какому провайдеру принадлежит ваш IP-адрес? Какой автономной системе AS? Воспользуйтесь утилитой `whois`.  
-**whois 88.86.x.x  
+*whois 88.86.x.x  
 INSYS LLC  
 whois -h whois.radb.net 88.86.х.х | grep ^origin  
-origin:     AS28890**
+origin:     AS28890*
 
 **Шаг 5.** Через какие сети проходит пакет, отправленный с вашего компьютера на адрес 8.8.8.8? Через какие AS? Воспользуйтесь утилитой `traceroute`.
 ````text 
@@ -70,7 +69,7 @@ traceroute to 8.8.8.8 (8.8.8.8), 30 hops max, 60 byte packets
 24  dns.google (8.8.8.8) [AS15169/AS263411]  43.656 ms  42.785 ms  45.204 ms
 ````  
 **Шаг 6.** Повторите задание 5 в утилите `mtr`. На каком участке наибольшая задержка — delay?  
-**10.10.4.93 worst 231** 
+*10.10.4.93 worst 231* 
 ![](https://github.com/Alexander-Sharygin/devops-netology/blob/main/03-sysadmin-06-net/Screenshot%20from%202023-04-02%2010-49-53.png)
 
 **Шаг 7.** Какие DNS-сервера отвечают за доменное имя dns.google? Какие A-записи? Воспользуйтесь утилитой `dig`.
@@ -85,12 +84,10 @@ dns.google.		236	IN	A	8.8.8.8
 dns.google.		236	IN	A	8.8.4.4
 ````
 **Шаг 8.** Проверьте PTR записи для IP-адресов из задания 7. Какое доменное имя привязано к IP? Воспользуйтесь утилитой `dig`.  
-К ip привязано имя dns.google
+*К ip привязано имя dns.google*
 ````text
 root@sysadm-fs:~# dig -x 8.8.8.8 +noall +answer
 8.8.8.8.in-addr.arpa.	3450	IN	PTR	dns.google.
 root@sysadm-fs:~# dig -x 8.8.4.4 +noall +answer
 4.4.8.8.in-addr.arpa.	3600	IN	PTR	dns.google.
 ````
-
-*В качестве ответов на вопросы приложите лог выполнения команд в консоли или скриншот полученных результатов.*
