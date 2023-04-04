@@ -32,7 +32,7 @@ lldpcli**
 3. Какая технология используется для разделения L2-коммутатора на несколько виртуальных сетей? Какой пакет и команды есть в Linux для этого? Приведите пример конфига.  
 **Технология vlan  
 Модуль ядра, проверить загружен ли модуль ядра lsmod | grep 8021q  
-sudo nano /etc/network/interfaces
+sudo nano /etc/network/interfaces**
 ````bash
 auto eth0.100
 iface eth0.100 inet static
@@ -41,7 +41,7 @@ netmask 255.255.255.0
 vlan-raw-device eth0
 auto eth0.100
 ````
-systemctl restart network
+**systemctl restart network  **
 4. Какие типы агрегации интерфейсов есть в Linux? Какие опции есть для балансировки нагрузки? Приведите пример конфига.  
 ````bash
 BONDING  
