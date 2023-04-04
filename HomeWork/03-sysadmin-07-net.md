@@ -41,7 +41,7 @@ netmask 255.255.255.0
 vlan-raw-device eth0
 auto eth0.100
 ````
-**systemctl restart network  **
+**systemctl restart network  **  
 4. Какие типы агрегации интерфейсов есть в Linux? Какие опции есть для балансировки нагрузки? Приведите пример конфига.  
 ````bash
 BONDING  
@@ -54,9 +54,9 @@ BONDING
  mode=6 (balance-alb) - Адаптивная балансировка нагрузки
  ````
 0,2,5,6 - балансировка нагрузки
-apt-get install ifenslave  
-auto bond0
+apt-get install ifenslave
 ````bash
+auto bond0
 iface bond0 inet static
     address 10.31.1.5
     netmask 255.255.255.0
