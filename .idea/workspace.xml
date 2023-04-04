@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d7efa54-6d55-47a5-ad64-8464fa9ec51f" name="Changes" comment="coomit homework2">
-      <change beforePath="$PROJECT_DIR$/03-sysadmin-06-net/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/03-sysadmin-06-net/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HomeWork/03-sysadmin-07-net.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -365,7 +366,28 @@
       <option name="project" value="LOCAL" />
       <updated>1680417005045</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="coomit homework2">
+      <created>1680417046532</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1680417046532</updated>
+    </task>
+    <task id="LOCAL-00045" summary="coomit homework2">
+      <created>1680417070785</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1680417070785</updated>
+    </task>
+    <task id="LOCAL-00046" summary="coomit homework2">
+      <created>1680417104427</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1680417104427</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
