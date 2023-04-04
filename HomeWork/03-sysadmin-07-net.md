@@ -33,7 +33,7 @@ lldpcli**
 **Технология vlan  
 Модуль ядра, проверить загружен ли модуль ядра lsmod | grep 8021q  
 sudo nano /etc/network/interfaces**
-````bash
+````bash 
 auto eth0.100
 iface eth0.100 inet static
 address 192.168.1.200
