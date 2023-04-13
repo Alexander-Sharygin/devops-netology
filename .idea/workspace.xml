@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d7efa54-6d55-47a5-ad64-8464fa9ec51f" name="Changes" comment="coomit homework2">
-      <change afterPath="$PROJECT_DIR$/HomeWork/03-sysadmin-07-net.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork/03-sysadmin-07-net.md" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork/03-sysadmin-07-net.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,27 +63,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678387140500</updated>
-    </task>
-    <task id="LOCAL-00001" summary="new test commit by pycharm to fix branch">
-      <created>1678388420425</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1678388420425</updated>
-    </task>
-    <task id="LOCAL-00002" summary="new test commit by pycharm to main branch">
-      <created>1678388801520</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1678388801520</updated>
-    </task>
-    <task id="LOCAL-00003" summary="new test commit by pycharm to main branch">
-      <created>1678388920204</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1678388920204</updated>
     </task>
     <task id="LOCAL-00004" summary="new test2 commit by pycharm to main branch">
       <created>1678389323810</created>
@@ -387,7 +365,49 @@
       <option name="project" value="LOCAL" />
       <updated>1680417104427</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="coomit homework2">
+      <created>1680625427148</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1680625427148</updated>
+    </task>
+    <task id="LOCAL-00048" summary="coomit homework2">
+      <created>1680625507403</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1680625507403</updated>
+    </task>
+    <task id="LOCAL-00049" summary="coomit homework2">
+      <created>1680625527933</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1680625527933</updated>
+    </task>
+    <task id="LOCAL-00050" summary="coomit homework2">
+      <created>1680625563211</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1680625563214</updated>
+    </task>
+    <task id="LOCAL-00051" summary="coomit homework2">
+      <created>1680625650764</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1680625650764</updated>
+    </task>
+    <task id="LOCAL-00052" summary="coomit homework2">
+      <created>1680625751347</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1680625751347</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
