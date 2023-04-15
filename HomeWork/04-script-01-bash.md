@@ -101,5 +101,5 @@ do
         echo $i>curl_err.log
         break;
     fi
-done >curl.log
+done >curl.log 
 ```
