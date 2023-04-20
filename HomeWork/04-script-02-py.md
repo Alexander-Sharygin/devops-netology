@@ -77,13 +77,37 @@ Process finished with exit code 0
 ### Ваш скрипт:
 
 ```python
-???
+#!/usr/bin/env python3
+
+import os
+from sys import argv
+import git
+try:
+    git = git.Repo(argv[1]).git_dir
+except git.exc.InvalidGitRepositoryError:
+    print("Dir is non git")
+    exit(1)
+
+
+bash_command = ["cd "+argv[1], "git status"]
+pwd = os.popen(bash_command[0]+";"+'pwd', 'r').read().replace('\n', '')
+result_os = os.popen(' && '.join(bash_command)).read()
+for result in result_os.split('\n'):
+    if result.find('modified') != -1:
+        prepare_result = result.replace('\tmodified:   ', '')
+        print(pwd+"/"+prepare_result)
 ```
 
 ### Вывод скрипта при запуске во время тестирования:
 
 ```
-???
+alexander@ThinkBook-14-G2-ARE:~/Netology/devops-netology/HomeWork$ python3 04-02-03.py ~/Netology/devops-netology/
+/home/alexander/Netology/devops-netology/.idea/workspace.xml
+/home/alexander/Netology/devops-netology/HomeWork/04-02-03.py
+
+alexander@ThinkBook-14-G2-ARE:~/Netology/devops-netology/HomeWork$ python3 04-02-03.py ~/Netology/
+Dir is non git
+
 ```
 
 ------

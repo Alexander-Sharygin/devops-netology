@@ -7,7 +7,6 @@
     <list default="true" id="4d7efa54-6d55-47a5-ad64-8464fa9ec51f" name="Changes" comment="coomit homework2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HomeWork/04-02-03.py" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork/04-02-03.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork/04-script-02-py.md" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork/04-script-02-py.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +83,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/HomeWork/04-02-03.py" />
-      <option name="PARAMETERS" value="" />
+      <option name="PARAMETERS" value="~/" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
@@ -107,6 +106,10 @@
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.04-02-03" />
+      <item itemvalue="Shell Script.curl.sh" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.04-02-03" />
@@ -121,13 +124,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678387140500</updated>
-    </task>
-    <task id="LOCAL-00010" summary="test commit fix2 by pycharm to main branch">
-      <created>1679249269958</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1679249269958</updated>
     </task>
     <task id="LOCAL-00011" summary="test commit fix2 by pycharm to main branch">
       <created>1679329127143</created>
@@ -465,7 +461,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682003294734</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="coomit homework2">
+      <created>1682014805471</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1682014805471</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -544,33 +547,28 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/HomeWork/04-02-03.py</url>
-          <line>9</line>
+          <line>16</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/HomeWork/04-02-03.py</url>
-          <line>10</line>
+          <line>17</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/HomeWork/04-02-03.py</url>
-          <line>11</line>
+          <line>18</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/HomeWork/04-02-03.py</url>
-          <line>4</line>
+          <line>12</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/HomeWork/04-02-03.py</url>
-          <line>6</line>
+          <line>14</line>
           <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/HomeWork/04-02-03.py</url>
-          <line>7</line>
-          <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
