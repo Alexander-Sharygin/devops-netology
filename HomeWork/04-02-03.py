@@ -2,11 +2,10 @@
 
 import os
 
-bash_command = ["cd ~/sysadm-homeworks", "git status"]
+bash_command = ["cd ~/Netology/devops-netology", "git status"]
+pwd = os.popen(bash_command[0]+";"+'pwd', 'r').read().replace('\n', '')
 result_os = os.popen(' && '.join(bash_command)).read()
-is_change = False
 for result in result_os.split('\n'):
     if result.find('modified') != -1:
         prepare_result = result.replace('\tmodified:   ', '')
-        print(prepare_result)
-        break
+        print(pwd+"/"+prepare_result)

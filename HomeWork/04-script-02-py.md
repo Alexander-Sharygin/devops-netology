@@ -30,6 +30,7 @@ c = a + b
 
 import os
 
+
 bash_command = ["cd ~/netology/sysadm-homeworks", "git status"]
 result_os = os.popen(' && '.join(bash_command)).read()
 is_change = False
@@ -43,13 +44,28 @@ for result in result_os.split('\n'):
 ### Ваш скрипт:
 
 ```python
-???
+#!/usr/bin/env python3
+
+import os
+
+bash_command = ["cd ~/Netology/devops-netology", "git status"]
+pwd = os.popen(bash_command[0]+";"+'pwd', 'r').read().replace('\n', '')
+result_os = os.popen(' && '.join(bash_command)).read()
+for result in result_os.split('\n'):
+    if result.find('modified') != -1:
+        prepare_result = result.replace('\tmodified:   ', '')
+        print(pwd+"/"+prepare_result)
 ```
 
 ### Вывод скрипта при запуске во время тестирования:
 
 ```
-???
+/usr/bin/python3.10 /home/alexander/Netology/devops-netology/HomeWork/04-02-03.py 
+/home/alexander/Netology/devops-netology/.idea/workspace.xml
+/home/alexander/Netology/devops-netology/HomeWork/04-02-03.py
+/home/alexander/Netology/devops-netology/HomeWork/04-script-02-py.md
+
+Process finished with exit code 0
 ```
 
 ------
