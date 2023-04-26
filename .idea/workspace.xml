@@ -7,7 +7,7 @@
     <list default="true" id="4d7efa54-6d55-47a5-ad64-8464fa9ec51f" name="Changes" comment="coomit homework2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HomeWork/04-02-04.py" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork/04-02-04.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork/monitor-hosts" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork/monitor-hosts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork/04-script-02-py.md" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork/04-script-02-py.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,13 +149,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678387140500</updated>
-    </task>
-    <task id="LOCAL-00013" summary="coomit homework2">
-      <created>1679336165755</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1679336165755</updated>
     </task>
     <task id="LOCAL-00014" summary="coomit homework2">
       <created>1679337361260</created>
@@ -493,7 +486,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682082967455</updated>
     </task>
-    <option name="localTasksCounter" value="62" />
+    <task id="LOCAL-00062" summary="coomit homework2">
+      <created>1682367907352</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1682367907352</updated>
+    </task>
+    <option name="localTasksCounter" value="63" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

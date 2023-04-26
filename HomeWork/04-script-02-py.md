@@ -135,64 +135,52 @@ import socket
 import sys
 import time
 from sys import argv
-#Выйдем, если не задан путь к файлу с хостами
 try:
     argv[1]
 except IndexError:
     print('Set the path to the file monitor-hosts in the script argument')
     sys.exit(1)
-hosts = []
-i = 0
+hosts = {}
 
+#Заполняем словарь host:ip из файла
+file = open(argv[1], "r")
 while True:
-    # Посчитаем кол-во хостов (строк в файле с хостами), это здесь, чтобы перечитывать конфиг с каждой новой итерацией
-    qt = 0
-    file = open(argv[1], "r")
-    while True:
-        line = file.readline().strip()
-        if not line:
-            break
-        qt = qt + 1
-    file.close
-    #Цикл заполняет словарь хост+ip, сравнивает текущий ip с прошлым , выводит сообщение о рассхождении
-    file = open(argv[1], "r")
-    while True:
-        line = file.readline().strip()
-        if not line:
-            break
-        hosts.append({line: socket.gethostbyname(line)})
-        print(str(*hosts[i].keys())+' - '+str(*hosts[i].values())+' ')
-        time.sleep(1)
-        if i > qt-1:
-            if hosts[i] != hosts[(i-qt)]:
-                #Выхода из программы нет, в задании не указано выйти после ошибки
-                print('[ERROR] '+ str(*hosts[i].keys())+' IP mismatch: '+str(*hosts[i-qt].values()))
-        i = i + 1
-# закрываем файл
+    line = file.readline().strip()
+    if not line:
+        break
+    hosts[line] = socket.gethostbyname(line)
+    print (line + ' - ' +hosts[line] )
 file.close
 
+#Проверяем по кругу
+while True:
+    for host, ip in hosts.items():
+        hosts[host] = socket.gethostbyname(host)
+        if ip != hosts[host]:
+            print('ERROR ' + host + ' IP missmatch: ' + hosts[host])
+        else:
+            print(host + ' - ' + ip)
+        time.sleep(1)
 ```
 
 ### Вывод скрипта при запуске во время тестирования:
 
 ```
-drive.google.com - 64.233.165.194 
-mail.google.com - 142.250.150.83 
-google.com - 64.233.162.138 
-drive.google.com - 64.233.165.194 
-mail.google.com - 142.250.150.83 
-google.com - 64.233.162.100 
-[ERROR] google.com IP mismatch: 64.233.162.138
-drive.google.com - 64.233.165.194 
-mail.google.com - 142.250.150.17 
-[ERROR] mail.google.com IP mismatch: 142.250.150.83
-google.com - 64.233.162.138 
-[ERROR] google.com IP mismatch: 64.233.162.100
-drive.google.com - 64.233.165.194 
-mail.google.com - 142.250.150.17 
-google.com - 64.233.162.100 
-[ERROR] google.com IP mismatch: 64.233.162.138
-drive.google.com - 64.233.165.194 
+drive.google.com - 108.177.14.194
+mail.google.com - 142.250.203.133
+google.com - 64.233.164.139
+drive.google.com - 108.177.14.194
+mail.google.com - 142.250.203.133
+ERROR google.com IP missmatch: 64.233.164.100
+drive.google.com - 108.177.14.194
+ERROR mail.google.com IP missmatch: 64.233.165.18
+ERROR google.com IP missmatch: 64.233.164.139
+drive.google.com - 108.177.14.194
+ERROR mail.google.com IP missmatch: 64.233.165.83
+ERROR google.com IP missmatch: 64.233.164.101
+drive.google.com - 108.177.14.194
+ERROR mail.google.com IP missmatch: 64.233.165.17
+ERROR google.com IP missmatch: 64.233.164.100
 .................
 ```
 
