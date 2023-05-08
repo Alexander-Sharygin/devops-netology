@@ -28,18 +28,18 @@ with open("04-script-03-yaml-1.json", 'r', encoding='UTF-8') as f:
     data = json.load(f)
     print (data)
 
-{"info": "Sample JSON output from our service\t",
- "elements": [
-     {"name": "first",
-      "type": "server",
-      "ip": 7175
-      },
-     {"name": "second",
-      "type": "proxy",
-      "ip": "71.78.22.43"
-      }
- ]
- }
+    { "info" : "Sample JSON output from our service\t",
+        "elements" :[
+            { "name" : "first",
+            "type" : "server",
+            "ip" : 7175
+            },
+            { "name" : "second",
+            "type" : "proxy",
+            "ip" : "71.78.22.43"
+            }
+        ]
+    }
 ```
 
 ---
