@@ -5,6 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d7efa54-6d55-47a5-ad64-8464fa9ec51f" name="Changes" comment="coomit homework2">
+      <change afterPath="$PROJECT_DIR$/HomeWork/hosts.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HomeWork/hosts.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork/04-02-04.py" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork/04-02-04.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HomeWork/04-script-03-yaml.md" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork/04-script-03-yaml.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +73,7 @@
       <recent name="$PROJECT_DIR$/HomeWork" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.04-script-03-yaml-1">
+  <component name="RunManager" selected="Python.04-02-04">
     <configuration name="04-02-03" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="devops-netology" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -170,13 +174,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678387140500</updated>
-    </task>
-    <task id="LOCAL-00018" summary="coomit homework2">
-      <created>1679502957406</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1679502957406</updated>
     </task>
     <task id="LOCAL-00019" summary="coomit homework2">
       <created>1679502987720</created>
@@ -514,7 +511,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683535154946</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="coomit homework2">
+      <created>1683535296833</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1683535296833</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -625,6 +629,11 @@
           <url>file://$PROJECT_DIR$/HomeWork/04-script-03-yaml-1.py</url>
           <line>4</line>
           <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/HomeWork/04-02-04.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
