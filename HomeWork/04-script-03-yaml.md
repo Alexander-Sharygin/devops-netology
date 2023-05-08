@@ -21,13 +21,6 @@
 ### Ваш скрипт:
 
 ```
-#!/usr/bin/env python3
-
-import json
-with open("04-script-03-yaml-1.json", 'r') as f:
-    data = json.load(f)
-    print (data)
-
     { "info" : "Sample JSON output from our service\t",
         "elements" :[
             { "name" : "first",
@@ -40,6 +33,15 @@ with open("04-script-03-yaml-1.json", 'r') as f:
             }
         ]
     }
+
++ 7175 не ip адрес.
+        
+#!/usr/bin/env python3
+
+import json
+with open("04-script-03-yaml-1.json", 'r') as f:
+    data = json.load(f)
+    print (data)
 ```
 
 ---
