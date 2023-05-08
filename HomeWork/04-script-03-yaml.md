@@ -105,7 +105,22 @@ while True:
 ### Вывод скрипта при запуске во время тестирования:
 
 ```
-???
+drive.google.com - 64.233.165.194
+mail.google.com - 142.250.74.37
+google.com - 142.251.1.138
+drive.google.com - 64.233.165.194
+mail.google.com - 142.250.74.37
+ERROR google.com IP missmatch: 142.251.1.102
+drive.google.com - 64.233.165.194
+mail.google.com - 142.250.74.37
+ERROR google.com IP missmatch: 142.251.1.113
+drive.google.com - 64.233.165.194
+mail.google.com - 142.250.74.37
+ERROR google.com IP missmatch: 142.251.1.139
+drive.google.com - 64.233.165.194
+mail.google.com - 142.250.74.37
+ERROR google.com IP missmatch: 142.251.1.113
+drive.google.com - 64.233.165.194
 ```
 
 ### JSON-файл(ы), который(е) записал ваш скрипт:
