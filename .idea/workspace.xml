@@ -174,13 +174,6 @@
       <option name="presentableId" value="Default" />
       <updated>1678387140500</updated>
     </task>
-    <task id="LOCAL-00015" summary="coomit homework2">
-      <created>1679340237868</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1679340237868</updated>
-    </task>
     <task id="LOCAL-00016" summary="coomit homework2">
       <created>1679340252019</created>
       <option name="number" value="00016" />
@@ -517,7 +510,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682522114665</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="coomit homework2">
+      <created>1683534875282</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1683534875283</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -618,6 +618,16 @@
           <url>file://$PROJECT_DIR$/HomeWork/04-02-03.py</url>
           <line>14</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/HomeWork/04-script-03-yaml-1.py</url>
+          <line>3</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/HomeWork/04-script-03-yaml-1.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
