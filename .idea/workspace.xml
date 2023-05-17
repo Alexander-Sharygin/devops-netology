@@ -7,8 +7,6 @@
     <list default="true" id="4d7efa54-6d55-47a5-ad64-8464fa9ec51f" name="Changes" comment="coomit homework2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HomeWork/05-virt-01-basics.md" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork/05-virt-01-basics.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork/hosts.json" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork/hosts.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HomeWork/hosts.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork/hosts.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,13 +171,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678387140500</updated>
-    </task>
-    <task id="LOCAL-00025" summary="coomit homework2">
-      <created>1679503998980</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1679503998980</updated>
     </task>
     <task id="LOCAL-00026" summary="coomit homework2">
       <created>1679504011827</created>
@@ -517,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683551673575</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="coomit homework2">
+      <created>1684337309887</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1684337309887</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
