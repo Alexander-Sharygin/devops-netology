@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d7efa54-6d55-47a5-ad64-8464fa9ec51f" name="Changes" comment="coomit homework2">
-      <change afterPath="$PROJECT_DIR$/HomeWork/05-virt-03-docker.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HomeWork/05-virt-03-docker.md" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork/05-virt-03-docker.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,13 +171,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678387140500</updated>
-    </task>
-    <task id="LOCAL-00030" summary="coomit homework2">
-      <created>1679504596246</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1679504596246</updated>
     </task>
     <task id="LOCAL-00031" summary="coomit homework2">
       <created>1679595833485</created>
@@ -515,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684652957617</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="coomit homework2">
+      <created>1684781699435</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1684781699435</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
