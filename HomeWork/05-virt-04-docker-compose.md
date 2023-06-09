@@ -38,9 +38,5 @@
 3. Изучите доступный интерфейс, найдите в интерфейсе автоматически созданные docker-compose-панели с графиками([dashboards](https://grafana.com/docs/grafana/latest/dashboards/use-dashboards/)).
 4. Подождите 5-10 минут, чтобы система мониторинга успела накопить данные.
 
-Чтобы получить зачёт, предоставьте: 
 
-- скриншот работающего веб-интерфейса Grafana с текущими метриками, как на примере ниже.
-<p align="center">
-  <img width="1200" height="600" src="./assets/yc_02.png">
-</p>
+![img](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/05-virt-04-docker-compose-prometeuse-screen.png)
