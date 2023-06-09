@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d7efa54-6d55-47a5-ad64-8464fa9ec51f" name="Changes" comment="coomit homework2">
-      <change afterPath="$PROJECT_DIR$/HomeWork/img/05-virt-04-docker-compose-doker-ps.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HomeWork/img/05-virt-04-docker-compose-prometeuse-screen.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/HomeWork/05-virt-04-docker-compose.md" beforeDir="false" afterPath="$PROJECT_DIR$/HomeWork/05-virt-04-docker-compose.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -171,20 +172,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1678387140500</updated>
-    </task>
-    <task id="LOCAL-00037" summary="coomit homework2">
-      <created>1680416266417</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1680416266417</updated>
-    </task>
-    <task id="LOCAL-00038" summary="coomit homework2">
-      <created>1680416300603</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1680416300603</updated>
     </task>
     <task id="LOCAL-00039" summary="coomit homework2">
       <created>1680416395194</created>
@@ -515,7 +502,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686330276259</updated>
     </task>
-    <option name="localTasksCounter" value="86" />
+    <task id="LOCAL-00086" summary="coomit homework2">
+      <created>1686334531442</created>
+      <option name="number" value="00086" />
+      <option name="presentableId" value="LOCAL-00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1686334531442</updated>
+    </task>
+    <task id="LOCAL-00087" summary="coomit homework2">
+      <created>1686334638404</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1686334638404</updated>
+    </task>
+    <option name="localTasksCounter" value="88" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
