@@ -4,7 +4,7 @@
 
 Чтобы получить зачёт, вам нужно предоставить скриншот страницы с созданным образом из личного кабинета YandexCloud.
 ![](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/05-virt-04-docker-compose-image.png)
-## Задача 2
+## Задача 2 
 
 **2.1.** Создайте вашу первую виртуальную машину в YandexCloud с помощью web-интерфейса YandexCloud.        
 
