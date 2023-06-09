@@ -3,10 +3,15 @@
 Создайте собственный образ любой операционной системы (например ubuntu-20.04) с помощью Packer ([инструкция](https://cloud.yandex.ru/docs/tutorials/infrastructure-management/packer-quickstart)).
 
 Чтобы получить зачёт, вам нужно предоставить скриншот страницы с созданным образом из личного кабинета YandexCloud.
-![](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/05-virt-04-docker-compose-image.png)
+
+
+![img](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/05-virt-04-docker-compose-image.png)
+
 ## Задача 2 
 
 **2.1.** Создайте вашу первую виртуальную машину в YandexCloud с помощью web-интерфейса YandexCloud.        
+
+
 
 **2.2.*** **(Необязательное задание)**      
 Создайте вашу первую виртуальную машину в YandexCloud с помощью Terraform (вместо использования веб-интерфейса YandexCloud).
