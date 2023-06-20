@@ -172,13 +172,6 @@
       <option name="presentableId" value="Default" />
       <updated>1678387140500</updated>
     </task>
-    <task id="LOCAL-00042" summary="coomit homework2">
-      <created>1680416878285</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1680416878285</updated>
-    </task>
     <task id="LOCAL-00043" summary="coomit homework2">
       <created>1680417005045</created>
       <option name="number" value="00043" />
@@ -515,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687192912752</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="coomit homework2">
+      <created>1687281660270</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1687281660270</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
