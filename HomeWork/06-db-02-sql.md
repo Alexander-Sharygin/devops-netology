@@ -249,7 +249,8 @@ puser=# explain SELECT c.* FROM clients c JOIN orders o ON c.заказ = o.id;
    ->  Hash  (cost=1.05..1.05 rows=5 width=4)
          ->  Seq Scan on orders o  (cost=0.00..1.05 rows=5 width=4)
 (5 rows)
-
+````
+```text
 Здесь мы видим план запроса в виде дерева.
  - Последовательно прочитана таблица orders
  - Создан хэш по полю id
