@@ -45,7 +45,7 @@ services:
 - описание таблиц (describe)
 - SQL-запрос для выдачи списка пользователей с правами над таблицами test_db
 - список пользователей с правами над таблицами test_db
-
+```bash
 psql -h localhost -U puser
 puser=# CREATE USER "test-admin-user" WITH PASSWORD '123qweas';
 puser=# CREATE DATABASE test_db
@@ -139,8 +139,7 @@ order by grantee, table_name;
  test-simple-user | orders     | SELECT
  test-simple-user | orders     | INSERT
 (22 rows)
-
-
+```
 
 ## Задача 3
 
@@ -173,7 +172,7 @@ order by grantee, table_name;
     - запросы 
     - результаты их выполнения.
 
-```text
+```bash
 puser=# INSERT INTO orders VALUES (1, 'Шоколад', 10), (2, 'Принтер', 3000), (3, 'Книга', 500), (4, 'Монитор', 7000), (5, 'Гитара', 4000);
 INSERT 0 5
 puser=# INSERT INTO clients VALUES (1, 'Иванов Иван Иванович', 'USA'), (2, 'Петров Петр Петрович', 'Canada'), (3, 'Иоганн Себастьян Бах', 'Japan'), (4, 'Ронни Джеймс Дио', 'Russia'), (5, 'Ritchie Blackmore', 'Russia');
@@ -190,7 +189,6 @@ puser=# SELECT count(id) FROM orders;
 -------
      5
 (1 row)
-
 ```
 
 ## Задача 4
@@ -211,19 +209,59 @@ puser=# SELECT count(id) FROM orders;
  
 Подсказк - используйте директиву `UPDATE`.
 
+```bash
 puser=# UPDATE clients SET "заказ" = (SELECT id FROM orders WHERE "наименование"='Книга') WHERE "фамилия"='Иванов Иван Иванович';
 puser=# UPDATE clients SET "заказ" = (SELECT id FROM orders WHERE "наименование"='Монитор') WHERE "фамилия"='Петров Петр Петрович';
 puser=# UPDATE clients SET "заказ" = (SELECT id FROM orders WHERE "наименование"='Гитара') WHERE "фамилия"='Иоганн Себастьян Бах';
 
 puser=# SELECT c.* FROM clients c JOIN orders o ON c.заказ = o.id;
+ id |       фамилия        | страна проживания | заказ 
+----+----------------------+-------------------+-------
+  1 | Иванов Иван Иванович | USA               |     3
+  2 | Петров Петр Петрович | Canada            |     4
+  3 | Иоганн Себастьян Бах | Japan             |     5
+(3 rows)
+```
 
 ## Задача 5
-
 Получите полную информацию по выполнению запроса выдачи всех пользователей из задачи 4 
 (используя директиву EXPLAIN).
 
 Приведите получившийся результат и объясните что значат полученные значения.
+```bash
+puser=# explain SELECT c.* FROM clients c JOIN orders o ON c.заказ = o.id;
+                               QUERY PLAN                               
+------------------------------------------------------------------------
+ Hash Join  (cost=37.00..57.24 rows=810 width=72)
+   Hash Cond: (c."заказ" = o.id)
+   ->  Seq Scan on clients c  (cost=0.00..18.10 rows=810 width=72)
+   ->  Hash  (cost=22.00..22.00 rows=1200 width=4)
+         ->  Seq Scan on orders o  (cost=0.00..22.00 rows=1200 width=4)
+(5 rows)
 
+После выполнения analyze по таблицам
+puser=# explain SELECT c.* FROM clients c JOIN orders o ON c.заказ = o.id;
+                             QUERY PLAN                             
+--------------------------------------------------------------------
+ Hash Join  (cost=1.11..2.19 rows=5 width=47)
+   Hash Cond: (c."заказ" = o.id)
+   ->  Seq Scan on clients c  (cost=0.00..1.05 rows=5 width=47)
+   ->  Hash  (cost=1.05..1.05 rows=5 width=4)
+         ->  Seq Scan on orders o  (cost=0.00..1.05 rows=5 width=4)
+(5 rows)
+
+Здесь мы видим план запроса в виде дерева.
+ - Последовательно прочитана таблица orders
+ - Создан хэш по полю id
+ - последовательно прочитана таблица clients
+ - каждая строка по полю заказ будет проверена по хэшу, на соответсвие с таблицей orders. Соответствующие строки будут в результате, остальные отброшены. (здесь не до конца понятно, проверка думаю ведется не только по хешу, совпавшие по хэшу также будут проверены и по значению)
+
+Cost - некая виртуальная величина оценивающая стоимость операции, первое значение затраты на получение первой строки второе затраты на получение всех строк.
+rows - приблизительное значение возращаемых строк. Его каким-то образом, приблезительно оценивает планировщик. Почему там 1200 и 800, откуда эти цыфры, не понял. После проведения анализа, данные о таблицах попадают в статистику и row начианет совпадать с кол-ом строк в таблице.
+width - оценка среднего размера строки в байтах.
+
+Так же можно выполнить explain (ANALYZE) и получить реальные данные как выполнялся запрос, а не прогнозируемые планировщиком.
+```
 ## Задача 6
 
 Создайте бэкап БД test_db и поместите его в volume, предназначенный для бэкапов (см. Задачу 1).
@@ -235,3 +273,32 @@ puser=# SELECT c.* FROM clients c JOIN orders o ON c.заказ = o.id;
 Восстановите БД test_db в новом контейнере.
 
 Приведите список операций, который вы применяли для бэкапа данных и восстановления. 
+
+```bash
+Зачем здесь нужен volume для бэкапов? почему не проще бэкапится на хосте
+export PGPASSWORD=123qweas && pg_dump -h localhost -U puser | gzip > ./backup/db_test.gz
+docker-compose down
+Stopping postgres_database_1 ... done
+Removing postgres_database_1 ... done
+Removing network postgres_default
+rm -rf ./db-data/*
+docker-compose up
+psql -h localhost -U puser
+psql (14.8 (Ubuntu 14.8-0ubuntu0.22.04.1), server 12.15 (Debian 12.15-1.pgdg120+1))
+Type "help" for help.
+puser=# \l+
+                                                               List of databases
+   Name    | Owner | Encoding |  Collate   |   Ctype    | Access privileges |  Size   | Tablespace |                Description                 
+-----------+-------+----------+------------+------------+-------------------+---------+------------+--------------------------------------------
+ postgres  | puser | UTF8     | en_US.utf8 | en_US.utf8 |                   | 7977 kB | pg_default | default administrative connection database
+ puser     | puser | UTF8     | en_US.utf8 | en_US.utf8 |                   | 7977 kB | pg_default | 
+ template0 | puser | UTF8     | en_US.utf8 | en_US.utf8 | =c/puser         +| 7833 kB | pg_default | unmodifiable empty database
+           |       |          |            |            | puser=CTc/puser   |         |            | 
+ template1 | puser | UTF8     | en_US.utf8 | en_US.utf8 | =c/puser         +| 7833 kB | pg_default | default template for new databases
+           |       |          |            |            | puser=CTc/puser   |         |            | 
+(4 rows)
+puser=# create database db_test;
+CREATE DATABASE
+puser=# exit
+zcat ./backup/db_test.gz | psql -h localhost -U puser db_test
+```
