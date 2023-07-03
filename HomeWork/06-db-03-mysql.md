@@ -5,7 +5,7 @@
 ```bash
 docker run --name mysql -d \
     -p 3306:3306 \
-    -e MYSQL_ROOT_PASSWORD=P@$$w)rd \
+    -e MYSQL_ROOT_PASSWORD=123QWEas \
     -v mysql:/var/lib/mysql
     mysql:latest
 ```
