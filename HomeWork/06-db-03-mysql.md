@@ -65,17 +65,22 @@ Query OK, 0 rows affected (0,00 sec)
 \h
 status
 Server version:		8.0.33 MySQL Community Server - GPL
-mysql> SHOW DATABASES;
-+--------------------+
-| Database           |
-+--------------------+
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-| test_db            |
-+--------------------+
-5 rows in set (0,03 sec)
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_test_db |
++-------------------+
+| orders            |
++-------------------+
+1 row in set (0,01 sec)
+
+mysql> SELECT COUNT(*) FROM orders WHERE price > 300;
++----------+
+| COUNT(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0,00 sec)
+
 ```
 
 
