@@ -1,7 +1,7 @@
 ##Этот файл для 7 задания!!
 locals {
 
-  test_list = ["develop", "staging", "production"]
+  test = ["${ local.test_map.admin }1234"]
 
   test_map = {
     admin = "John"

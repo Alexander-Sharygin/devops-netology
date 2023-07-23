@@ -62,6 +62,17 @@ variable "my_object" {
 
 #Пример сложных object:
 
+variable "vm_db_resources" {
+  type    = map (number)
+  default = {
+    cores         = 2
+    memory        = 2
+    core_fraction = 20
+  }
+}
+
+
+
 # object(map(list)) представляет собой переменную типа объекта, где каждое значение является картой списков
 # > var.user_contacts1["john"].email[1]  Вот так можно извлечь второй по списку email для пользователя john.
 variable "user_contacts1" {
