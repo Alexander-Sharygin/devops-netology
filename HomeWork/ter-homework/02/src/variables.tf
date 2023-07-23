@@ -30,7 +30,46 @@ variable "vpc_name" {
   default     = "develop"
   description = "VPC network & subnet name"
 }
+###Переменные по заданию
+variable "image_family" {
+  type        = string
+  default     = "ubuntu-2004-lts"
+  description = "Image family"
+}
 
+variable "vm_web_name" {
+  type        = string
+  default     = "netology-develop-platform-web"
+}
+
+variable "vm_web_platform_id" {
+  type        = string
+  default     = "standard-v1"
+}
+
+variable "vm_web_resources" {
+  type    = map (number)
+  default = {
+    cores         = 2
+    memory        = 1
+    core_fraction = 5
+  }
+}
+
+variable "vm_web_scheduling_policy" {
+  type          = bool
+  default       = true
+}
+
+variable "vm_web_network_interface_nat" {
+  type = bool
+  default = true
+}
+
+variable "vm_web_serial-port-enable" {
+  type = number
+  default = 1
+}
 
 ###ssh vars
 
