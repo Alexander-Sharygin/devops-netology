@@ -62,6 +62,44 @@ variable "vm_resources" {
   }
 }
 
+##task2
+variable "vm_resources_task3" {
+  type = map(object({
+    vm_name = string,
+    cpu     = number,
+    ram     = number,
+    disk    = number,
+    core_fraction = number
+  }))
+  default = {
+    main = {
+      vm_name       = "main"
+      cpu           = 1
+      ram           = 2
+      disk          = 3
+      core_fraction = 20
+    },
+    replica = {
+      vm_name       = "replica"
+      cpu           = 1
+      ram           = 2
+      disk          = 3
+      core_fraction = 5
+    }
+  }
+}
+
+/*variable "vm_resources_task3" {
+  type = list(object({
+    vm_name       = string
+    cores         = number
+    memory        = number
+    core_fraction = number
+  }
+    def
+
+    }
+*/
 ##Общие для вм параметры
 variable "vm_all_scheduling_policy" {
   type          = bool
