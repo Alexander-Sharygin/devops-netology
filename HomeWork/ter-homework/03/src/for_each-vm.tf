@@ -1,4 +1,5 @@
 resource "yandex_compute_instance" "platform_task3" {
+  depends_on = [yandex_compute_instance.platform]
   for_each = var.vm_resources_task3
   name        = each.value.vm_name
   platform_id = var.vm_web_platform_id
