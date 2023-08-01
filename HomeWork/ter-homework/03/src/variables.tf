@@ -63,7 +63,7 @@ variable "vm_resources" {
 }
 
 ##task2
-variable "vm_resources_task3" {
+variable "vm_resources_task2" {
   type = map(object({
     vm_name = string,
     cpu     = number,
@@ -89,17 +89,6 @@ variable "vm_resources_task3" {
   }
 }
 
-/*variable "vm_resources_task3" {
-  type = list(object({
-    vm_name       = string
-    cores         = number
-    memory        = number
-    core_fraction = number
-  }
-    def
-
-    }
-*/
 ##Общие для вм параметры
 variable "vm_all_scheduling_policy" {
   type          = bool
