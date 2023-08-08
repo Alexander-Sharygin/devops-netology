@@ -101,8 +101,12 @@ variable "vm_all_network_interface_nat" {
 }
 
 variable "metadata" {
-  default = {serial-port-enable=1, ssh-keys  = "$local.sshkey"}
+  default = {serial-port-enable=1, ssh-keys  = ""}
 }
 
-
+variable "out_name" {
+  type        = list(string)
+  default     = ["name","id","cidr"]
+  description = "naming for output"
+}
 

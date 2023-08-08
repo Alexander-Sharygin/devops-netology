@@ -25,5 +25,7 @@ resource "yandex_compute_instance" "platform" {
     security_group_ids = [yandex_vpc_security_group.example.id]
   }
 
-  metadata = var.metadata
+  metadata = {
+    ssh-keys = local.sshkey
+  }
 }
