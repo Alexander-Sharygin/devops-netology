@@ -83,7 +83,7 @@ ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    s
 9. Посмотрите при помощи `ansible-doc` список плагинов для подключения. Выберите подходящий для работы на `control node`.
 ```bash
 ansible-doc ansible-doc -t connection -l
-```  
+```
 *Подходящий плагин для работы на control_node ansible.builtin.local*
 11. В `prod.yml` добавьте новую группу хостов с именем  `local`, в ней разместите localhost с необходимым типом подключения.
 ```bash
