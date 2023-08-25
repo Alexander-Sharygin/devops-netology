@@ -50,7 +50,7 @@ ok: [ubuntu] => {
 ansible-vault encrypt playbook/group_vars/el/examp.yml playbook/group_vars/deb/examp.yml
 ```
 8. Запустите playbook на окружении `prod.yml`. При запуске `ansible` должен запросить у вас пароль. Убедитесь в работоспособности.
-```bash
+```bash 
 ansible-playbook site.yml -i inventory/prod.yml --ask-vault-password
 Vault password: 
 
