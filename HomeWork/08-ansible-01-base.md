@@ -81,7 +81,7 @@ centos7                    : ok=3    changed=0    unreachable=0    failed=0    s
 ubuntu                     : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 ````
 9. Посмотрите при помощи `ansible-doc` список плагинов для подключения. Выберите подходящий для работы на `control node`.
-```bash
+```bash 
 ansible-doc ansible-doc -t connection -l
 ```
 *Подходящий плагин для работы на control_node ansible.builtin.local*
