@@ -11,6 +11,7 @@ resource "yandex_compute_instance" "platform_task2" {
   boot_disk {
     initialize_params {
       image_id = data.yandex_compute_image.ubuntu.image_id
+      size     = each.value.disk
     }
   }
   scheduling_policy {

@@ -69,14 +69,14 @@ variable "vm_resources_task2" {
      vm_name = "main"
      cpu = 4
      ram = 2
-     disk = 1
+     disk = 15
      core_fraction = 20
     },
     {
      vm_name = "replica"
      cpu = 2
      ram = 1
-     disk = 1
+     disk = 10
      core_fraction = 5
     }
   ]
