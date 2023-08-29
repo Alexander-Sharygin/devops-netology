@@ -64,29 +64,22 @@ variable "vm_resources" {
 
 ##task2
 variable "vm_resources_task2" {
-  type = map(object({
-    vm_name = string,
-    cpu     = number,
-    ram     = number,
-    disk    = number,
-    core_fraction = number
-  }))
-  default = {
-    main = {
-      vm_name       = "main"
-      cpu           = 4
-      ram           = 2
-      disk          = 1
-      core_fraction = 20
+  default = [
+    {
+     vm_name = "main"
+     cpu = 4
+     ram = 2
+     disk = 1
+     core_fraction = 20
     },
-    replica = {
-      vm_name       = "replica"
-      cpu           = 2
-      ram           = 1
-      disk          = 1
-      core_fraction = 5
+    {
+     vm_name = "replica"
+     cpu = 2
+     ram = 1
+     disk = 1
+     core_fraction = 5
     }
-  }
+  ]
 }
 
 ##Общие для вм параметры

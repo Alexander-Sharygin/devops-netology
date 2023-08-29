@@ -1,6 +1,6 @@
 resource "yandex_compute_instance" "platform_task2" {
   depends_on = [yandex_compute_instance.platform]
-  for_each = var.vm_resources_task2
+  for_each = {for i in var.vm_resources_task2 : i.vm_name => i}
   name        = each.value.vm_name
   platform_id = var.vm_web_platform_id
   resources {
@@ -22,5 +22,7 @@ resource "yandex_compute_instance" "platform_task2" {
     security_group_ids = [yandex_vpc_security_group.example.id]
   }
 
-  metadata = var.metadata
+  metadata = {
+    sshkey = local.sshkey
+  }
 }

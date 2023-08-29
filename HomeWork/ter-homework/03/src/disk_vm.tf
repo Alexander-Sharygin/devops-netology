@@ -34,5 +34,7 @@ resource "yandex_compute_instance" "platform-task3" {
     security_group_ids = [yandex_vpc_security_group.example.id]
   }
 
-  metadata = var.metadata
+  metadata = {
+    sshkey = local.sshkey
+  }
 }
