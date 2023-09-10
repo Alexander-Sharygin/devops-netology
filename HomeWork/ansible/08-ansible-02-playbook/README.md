@@ -69,8 +69,9 @@ Passed: 0 failure(s), 0 warning(s) on 1 files. Last profile that met the validat
 ```bash
 clickhouse-01              : ok=8    changed=0    unreachable=0    failed=0    skipped=0    rescued=1    ignored=0   
 ```
-Плэйбук идемпотентен, т.к. ни какие изменения не выполнялись, потому что удаленный хост уже находится в нужном состоянии.  
-9. Подготовьте README.md-файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги. Пример качественной документации ansible playbook по [ссылке](https://github.com/opensearch-project/ansible-playbook).
+- Плэйбук идемпотентен, т.к. ни какие изменения не выполнялись, потому что удаленный хост уже находится в нужном состоянии.  
+9. Подготовьте README.md-файл по своему playbook. В нём должно быть описано: что делает playbook, какие у него есть параметры и теги. Пример качественной документации ansible playbook по [ссылке](https://github.com/opensearch-project/ansible-playbook).  
+- [README.md](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/ansible/08-ansible-02-playbook/playbook/README.md)
 10. Готовый playbook выложите в свой репозиторий, поставьте тег `08-ansible-02-playbook` на фиксирующий коммит, в ответ предоставьте ссылку на него.
 
 ---
