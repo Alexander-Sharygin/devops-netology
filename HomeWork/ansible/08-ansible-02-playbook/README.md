@@ -55,7 +55,7 @@ vector:
 WARNING  Listing 8 violation(s) that are fatal
 name[missing]: All tasks should be named.
 site.yml:11 Task/Handler: block/always/rescue 
-
+ 
 risky-file-permissions: File permissions unset or incorrect.
 site.yml:12 Task/Handler: Get clickhouse distrib
 
