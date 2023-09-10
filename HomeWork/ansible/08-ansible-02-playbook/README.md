@@ -60,7 +60,6 @@ Failed: 6 failure(s), 2 warning(s) on 1 files. Last profile that met the validat
 Passed: 0 failure(s), 0 warning(s) on 1 files. Last profile that met the validation criteria was 'production'.
 ```
 
-
 6. Попробуйте запустить playbook на этом окружении с флагом `--check`.  
  - Попробовал, в режиме проверки не вносятся изменения на удаленных системах, полезность для данного плэйбука не понятна, т.к. проверить его работу не удастся без внесения изменений, уже на установке не пойдет дальше, т.к. файлы пакетов не скачаны.
 7. Запустите playbook на `prod.yml` окружении с флагом `--diff`. Убедитесь, что изменения на системе произведены.  
