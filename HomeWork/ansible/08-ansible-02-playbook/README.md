@@ -9,8 +9,45 @@
 
 ## Основная часть
 
-1. Подготовьте свой inventory-файл `prod.yml`.
-2. Допишите playbook: нужно сделать ещё один play, который устанавливает и настраивает [vector](https://vector.dev). Конфигурация vector должна деплоиться через template файл jinja2.
+1. Подготовьте свой inventory-файл `prod.yml`.  
+```yaml
+---
+clickhouse:
+  hosts:
+    clickhouse-01:
+      ansible_host: 158.160.118.96
+      ansible_user: centos
+
+vector:
+  hosts:
+    clickhouse-01:
+      ansible_host: 158.160.118.96
+      ansible_user: centos
+
+```
+2. Допишите playbook: нужно сделать ещё один play, который устанавливает и настраивает [vector](https://vector.dev). Конфигурация vector должна деплоиться через template файл jinja2.  
+```yaml
+- name: Install Vector
+  hosts: clickhouse
+  tasks:
+    - name: Get vector rpm distrib
+      ansible.builtin.get_url:
+        url: "{{ vector_rpm_url }}"
+        dest: "./vector-{{ vector_version }}-1.x86_64.rpm"
+        mode: "664"
+
+    - name: Install vector rpm packages
+      become: true
+      ansible.builtin.yum:
+        name: "./vector-{{ vector_version }}-1.x86_64.rpm"
+
+    - name: Deploy Vector Config
+      become: true
+      ansible.builtin.template:
+        src: "{{ vector_conf_template }}"
+        dest: "{{ vector_conf_dest }}"
+        mode: "664"
+```
 3. При создании tasks рекомендую использовать модули: `get_url`, `template`, `unarchive`, `file`.
 4. Tasks должны: скачать дистрибутив нужной версии, выполнить распаковку в выбранную директорию, установить vector.
 5. Запустите `ansible-lint site.yml` и исправьте ошибки, если они есть.  
