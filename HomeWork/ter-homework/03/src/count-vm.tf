@@ -13,7 +13,7 @@ resource "yandex_compute_instance" "platform" {
   }
   boot_disk {
     initialize_params {
-      image_id = data.yandex_compute_image.ubuntu.image_id
+      image_id = var.im
     }
   }
   scheduling_policy {
