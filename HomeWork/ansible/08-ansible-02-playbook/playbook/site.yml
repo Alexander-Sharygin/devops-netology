@@ -39,7 +39,13 @@
       changed_when: create_db.rc == 0
 
 - name: Install Vector
-  hosts: clickhouse
+  hosts: vector
+  handlers:
+    - name: Start vector service
+      become: true
+      ansible.builtin.service:
+        name: vector
+        state: restarted
   tasks:
     - name: Get vector rpm distrib
       ansible.builtin.get_url:
@@ -51,6 +57,7 @@
       become: true
       ansible.builtin.yum:
         name: "./vector-{{ vector_version }}-1.x86_64.rpm"
+      notify: Start vector service
 
     - name: Deploy Vector Config
       become: true
@@ -58,3 +65,6 @@
         src: "{{ vector_conf_template }}"
         dest: "{{ vector_conf_dest }}"
         mode: "664"
+
+    - name: Flush handlers
+      ansible.builtin.meta: flush_handlers
