@@ -35,3 +35,9 @@ variable "public_key" {
   type    = string
   default = ""
 }
+
+variable ssh_public_key {
+  type        = string
+  default = "/home/alexander/.ssh/id_rsa.pub"
+  description = "Location of SSH public key."
+}
