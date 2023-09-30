@@ -17,24 +17,32 @@ provider "yandex" {
 
 
 #создаем облачную сеть
-resource "yandex_vpc_network" "develop" {
-  name = "develop"
-}
+#resource "yandex_vpc_network" "develop" {
+#  name = "develop"
+#}
 
 #создаем подсеть
-resource "yandex_vpc_subnet" "develop" {
-  name           = "develop-ru-central1-a"
-  zone           = "ru-central1-a"
-  network_id     = yandex_vpc_network.develop.id
-  v4_cidr_blocks = ["10.0.1.0/24"]
+#resource "yandex_vpc_subnet" "develop" {
+#  name           = "develop-ru-central1-a"
+#  zone           = "ru-central1-a"
+#  network_id     = yandex_vpc_network.develop.id
+#  v4_cidr_blocks = ["10.0.1.0/24"]
+#}
+
+module "net_subnet" {
+  source = "./modules/net_subnet"
+  env_name    = "develop"
+  subnet_name = "develop-ru-central1-a"
+  subnet_zone = "ru-central1-a"
+  subnet_v4_cidr_blocks = "10.0.1.0/24"
 }
 
 module "test-vm" {
   source          = "git::https://github.com/udjin10/yandex_compute_instance.git?ref=main"
   env_name        = "develop"
-  network_id      = yandex_vpc_network.develop.id
+  network_id      = module.net_subnet.network_id
   subnet_zones    = ["ru-central1-a"]
-  subnet_ids      = [ yandex_vpc_subnet.develop.id ]
+  subnet_ids      = [module.net_subnet.subnet_ids]
   instance_name   = "web"
   instance_count  = 2
   image_family    = "ubuntu-2004-lts"
