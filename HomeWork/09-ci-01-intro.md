@@ -44,13 +44,13 @@
 1. При проведении обеих задач по статусам используйте kanban. 
 
 **Выполнено 1-3:**  
-![jira-03.png](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/jira-03.png)
+![jira-04.png](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/jira-04.png)
 
 
 4. Верните задачи в статус Open.
 
 **Выполнено:**  
-![jira-04.png](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/jira-04.png)
+![jira-06.png](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/jira-06.png)
 
 5. Перейдите в Scrum, запланируйте новый спринт, состоящий из задач эпика и одного бага, стартуйте спринт, проведите задачи до состояния Closed. Закройте спринт.
 2. Если всё отработалось в рамках ожидания — выгрузите схемы workflow для импорта в XML. Файлы с workflow и скриншоты workflow приложите к решению задания.
