@@ -6,7 +6,7 @@
 2. Настроить её для своей команды разработки.
 3. Создать доски Kanban и Scrum.
 4. [Дополнительные инструкции от разработчика Jira](https://support.atlassian.com/jira-cloud-administration/docs/import-and-export-issue-workflows/).
-
+ 
 ## Основная часть
 
 Необходимо создать собственные workflow для двух типов задач: bug и остальные типы задач. Задачи типа bug должны проходить жизненный цикл:
