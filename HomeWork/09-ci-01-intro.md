@@ -6,7 +6,9 @@
 2. Настроить её для своей команды разработки.
 3. Создать доски Kanban и Scrum.
 4. [Дополнительные инструкции от разработчика Jira](https://support.atlassian.com/jira-cloud-administration/docs/import-and-export-issue-workflows/).
- 
+
+**Выполнено:**  
+![jira-01.png](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/jira-01.png)
 ## Основная часть
 
 Необходимо создать собственные workflow для двух типов задач: bug и остальные типы задач. Задачи типа bug должны проходить жизненный цикл:
@@ -19,6 +21,10 @@
 6. On test -> On fix, Done.
 7. Done -> Closed, Open.
 
+**Выполнено:**  
+![jira-02.png](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/jira-02.png)
+
+
 Остальные задачи должны проходить по упрощённому workflow:
 
 1. Open -> On develop.
@@ -27,13 +33,26 @@
 4. On test -> On develop, Done.
 5. Done -> Closed, Open.
 
+**Выплнено:**  
+![jira-03.png](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/jira-03.png)
+
+
 **Что нужно сделать**
 
 1. Создайте задачу с типом bug, попытайтесь провести его по всему workflow до Done. 
 1. Создайте задачу с типом epic, к ней привяжите несколько задач с типом task, проведите их по всему workflow до Done. 
 1. При проведении обеих задач по статусам используйте kanban. 
-1. Верните задачи в статус Open.
-1. Перейдите в Scrum, запланируйте новый спринт, состоящий из задач эпика и одного бага, стартуйте спринт, проведите задачи до состояния Closed. Закройте спринт.
+
+**Выполнено 1-3:**  
+![jira-03.png](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/jira-03.png)
+
+
+4. Верните задачи в статус Open.
+
+**Выполнено:**  
+![jira-04.png](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/jira-04.png)
+
+5. Перейдите в Scrum, запланируйте новый спринт, состоящий из задач эпика и одного бага, стартуйте спринт, проведите задачи до состояния Closed. Закройте спринт.
 2. Если всё отработалось в рамках ожидания — выгрузите схемы workflow для импорта в XML. Файлы с workflow и скриншоты workflow приложите к решению задания.
 
 ---
@@ -43,3 +62,12 @@
 Выполненное домашнее задание пришлите в виде ссылки на .md-файл в вашем репозитории.
 
 ---
+
+**PS:**  
+Сдаю не законченным, т.к. уперся..
+По порядку выполняя задания, создал два проекта kanban и scrum. Настроил в первом (канбан) проекте workflow в соответствии с заданием.  
+В scrum проекте этих воркфлоу естественно нет, экспортнуть из проекта workflow не понятно как или нет такой возможности.  
+Понял, что есть глобальные настройки дла issue, создал там workflow по новой.. там же и экспортировать можно.  
+![jira-05.png](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/jira-05.png)
+Далее не понимаю как их привязать к проектам. В гугле, что-то про классические проекты и нового поколения, мои видимо нового поколения, и к ним нельзя привязать эти глобальные workflow чтоли. Я могу конечно создать workflow опять, но в проекте scrum и завершить задание в части scrum, но это тупо. Сдаю пока так потому что дедлайн.
+[link](https://community.atlassian.com/t5/Team-managed-projects-articles/Everything-you-want-to-know-about-next-gen-projects-in-Jira/ba-p/894773)
