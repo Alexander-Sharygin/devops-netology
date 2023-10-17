@@ -52,8 +52,11 @@
 **Выполнено:**  
 ![jira-06.png](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/jira-06.png)
 
-5. Перейдите в Scrum, запланируйте новый спринт, состоящий из задач эпика и одного бага, стартуйте спринт, проведите задачи до состояния Closed. Закройте спринт.
-2. Если всё отработалось в рамках ожидания — выгрузите схемы workflow для импорта в XML. Файлы с workflow и скриншоты workflow приложите к решению задания.
+5. Перейдите в Scrum, запланируйте новый спринт, состоящий из задач эпика и одного бага, стартуйте спринт, проведите задачи до состояния Closed. Закройте спринт.  
+
+![jira-07.png](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/jira-07.png)  
+
+6. Если всё отработалось в рамках ожидания — выгрузите схемы workflow для импорта в XML. Файлы с workflow и скриншоты workflow приложите к решению задания.
 [xml](https://github.com/Alexander-Sharygin/devops-netology/tree/main/HomeWork/xml)
 ---
 
