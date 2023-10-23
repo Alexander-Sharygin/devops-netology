@@ -1,0 +1,146 @@
+---
+- name: Install Clickhouse
+  hosts: clickhouse
+  handlers:
+    - name: Start clickhouse service
+      become: true
+      ansible.builtin.service:
+        name: clickhouse-server
+        state: restarted
+  tasks:
+    - name: Block for get clickhouse distrib
+      block:
+        - name: Get clickhouse distrib
+          ansible.builtin.get_url:
+            url: "https://packages.clickhouse.com/rpm/stable/{{ item }}-{{ clickhouse_version }}.noarch.rpm"
+            dest: "./{{ item }}-{{ clickhouse_version }}.rpm"
+            mode: "664"
+          with_items: "{{ clickhouse_packages }}"
+      rescue:
+        - name: Get clickhouse distrib
+          ansible.builtin.get_url:
+            url: "https://packages.clickhouse.com/rpm/stable/clickhouse-common-static-{{ clickhouse_version }}.x86_64.rpm"
+            dest: "./clickhouse-common-static-{{ clickhouse_version }}.rpm"
+            mode: "664"
+    - name: Install clickhouse packages
+      become: true
+      ansible.builtin.yum:
+        name:
+          - clickhouse-common-static-{{ clickhouse_version }}.rpm
+          - clickhouse-client-{{ clickhouse_version }}.rpm
+          - clickhouse-server-{{ clickhouse_version }}.rpm
+      notify: Start clickhouse service
+    - name: Flush handlers
+      ansible.builtin.meta: flush_handlers
+    - name: Create database
+      ansible.builtin.command: "clickhouse-client -q 'create database logs;'"
+      register: create_db
+      failed_when: create_db.rc != 0 and create_db.rc != 82
+      changed_when: create_db.rc == 0
+
+- name: Install Vector
+  hosts: vector
+  handlers:
+    - name: Start vector service
+      become: true
+      ansible.builtin.service:
+        name: vector
+        state: restarted
+  tasks:
+    - name: Get vector rpm distrib
+      ansible.builtin.get_url:
+        url: "{{ vector_rpm_url }}"
+        dest: "./vector-{{ vector_version }}-1.x86_64.rpm"
+        mode: "664"
+
+    - name: Install vector rpm packages
+      become: true
+      ansible.builtin.yum:
+        name: "./vector-{{ vector_version }}-1.x86_64.rpm"
+      notify: Start vector service
+
+    - name: Deploy Vector Config
+      become: true
+      ansible.builtin.template:
+        src: "{{ vector_conf_template }}"
+        dest: "{{ vector_conf_dest }}"
+        mode: "664"
+
+    - name: Flush handlers
+      ansible.builtin.meta: flush_handlers
+
+
+- name: Install Vector
+  hosts: vector
+  handlers:
+    - name: Start vector service
+      become: true
+      ansible.builtin.service:
+        name: vector
+        state: restarted
+  tasks:
+    - name: Get vector rpm distrib
+      ansible.builtin.get_url:
+        url: "{{ vector_rpm_url }}"
+        dest: "./vector-{{ vector_version }}-1.x86_64.rpm"
+        mode: "664"
+
+    - name: Install vector rpm packages
+      become: true
+      ansible.builtin.yum:
+        name: "./vector-{{ vector_version }}-1.x86_64.rpm"
+      notify: Start vector service
+
+    - name: Deploy Vector Config
+      become: true
+      ansible.builtin.template:
+        src: "{{ vector_conf_template }}"
+        dest: "{{ vector_conf_dest }}"
+        mode: "664"
+
+    - name: Flush handlers
+      ansible.builtin.meta: flush_handlers
+
+#***
+
+
+#***
+- name: Install lighthouse
+  hosts: lighthouse
+  handlers:
+    - name: start-nginx
+      become: true
+      command: nginx
+    - name: reload-nginx
+      become: true
+      command: nginx -s reload
+  pre_tasks:
+    - name: Lighthouse | Install git
+      become: true
+      ansible.builtin.yum:
+        name: git
+        state: present
+    - name: Lighthouse | Install epel
+      become: true
+      ansible.builtin.yum:
+        name: epel-release
+        state: present
+    - name: Lighthouse | Install nginx
+      become: true
+      ansible.builtin.yum:
+        name: nginx
+        state: present
+      notify: start-nginx
+    - name: Lighthouse | Create nginx config
+      become: true
+      template:
+        src: nginx.conf.j2
+        dest: /etc/nginx/conf.d/default.conf
+      notify: reload-nginx
+  tasks:
+    - name: Lighthouse | Copy form git
+      become: true
+      git:
+        repo: "{{ lighthouse_vcs }}"
+        version: master
+        dest: "{{ lighthouse_dir }}"
