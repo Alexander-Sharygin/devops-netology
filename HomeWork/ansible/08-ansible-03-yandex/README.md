@@ -86,10 +86,12 @@ lighthouse:
       ansible_host: 158.160.106.140
       ansible_user: centos
 ```
-5. Запущено ошибки исправлены, всё накатилось.
-6-8. Выполнено  
+5. Запущено ошибки исправлены, всё накатилось.  
+6. Выполнено
+7. Выполнено
+8. Выполнено
 9. [readme.md](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/ansible/08-ansible-03-yandex/playbook/README.md)  
-10. 
+10. Выполено
 ### Как оформить решение задания
 
 Выполненное домашнее задание пришлите в виде ссылки на .md-файл в вашем репозитории.
