@@ -5,6 +5,7 @@
 1. Подготовьте в Yandex Cloud три хоста: для `clickhouse`, для `vector` и для `lighthouse`.  
 **Запущено с помощью терраформ 3 ВМ**  
 ans-03-01.png
+![ans-03-01.png](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/ans-03-01.png)
 2. Репозиторий LightHouse находится [по ссылке](https://github.com/VKCOM/lighthouse).
 
 ## Основная часть
@@ -86,7 +87,9 @@ lighthouse:
       ansible_user: centos
 ```
 5. Запущено ошибки исправлены, всё накатилось.
-6. 
+6-8. Выполнено  
+9. [readme.md](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/ansible/08-ansible-03-yandex/playbook/README.md)  
+10. 
 ### Как оформить решение задания
 
 Выполненное домашнее задание пришлите в виде ссылки на .md-файл в вашем репозитории.
