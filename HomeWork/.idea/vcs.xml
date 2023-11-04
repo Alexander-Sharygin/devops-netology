@@ -2,7 +2,7 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ansible/08-ansible-04-role/playbook/lighthouse-role" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ansible/08-ansible-04-role/playbook/vector-role" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ansible/08-ansible-04-role/role/lighthouse-role" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ansible/08-ansible-04-role/role/vector-role" vcs="Git" />
   </component>
 </project>
