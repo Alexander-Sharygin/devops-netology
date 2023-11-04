@@ -143,4 +143,4 @@
       git:
         repo: "{{ lighthouse_vcs }}"
         version: master
-        dest: "{{ lighthouse_dir }}"
+        dest: "{{ document_root }}/{{ app_root }}"
