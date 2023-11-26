@@ -3,7 +3,7 @@
 ## Подготовка к выполнению
 
 1. Установите molecule: `pip3 install "molecule==3.5.2"` и драйвера `pip3 install molecule_docker molecule_podman`.
-2. Выполните `docker pull aragast/netology:latest` —  это образ с podman, tox и несколькими пайтонами (3.7 и 3.9) внутри.  
+2. Выполните `docker pull aragast/netology:latest` — это образ с podman, tox и несколькими пайтонами (3.7 и 3.9) внутри.  
 
 **Выполнено.**
 ## Основная часть
@@ -17,13 +17,47 @@
 ### Molecule
 
 1. Запустите  `molecule test -s centos_7` внутри корневой директории clickhouse-role, посмотрите на вывод команды. Данная команда может отработать с ошибками, это нормально. Наша цель - посмотреть как другие в реальном мире используют молекулу.  
+
+Получена ошибка 
 ```bash
-molecule test -s centos_7
-WARNING  Driver docker does not provide a schema.
 CRITICAL Failed to validate /home/alexander/.ansible/roles/clickhouse/molecule/centos_7/molecule.yml
 
 ["Additional properties are not allowed ('playbooks' was unexpected)"]
 ``` 
+Не доступно свойство playbooks ./centos_7/molecule.yml, закоментировал:
+```yaml
+provisioner:
+  name: ansible
+  options:
+    vv: true
+    D: true
+  inventory:
+    links:
+      hosts: ../resources/inventory/hosts.yml
+      group_vars: ../resources/inventory/group_vars/
+      host_vars: ../resources/inventory/host_vars/
+#  playbooks:
+#    converge: ../resources/playbooks/converge.yml
+verifier:
+  name: ansible
+#  playbooks:
+#    verify: ../resources/tests/verify.yml
+```
+Повторное тестирование, ошибка:  
+```bash
+TASK [Include ansible-clickhouse] **********************************************
+ERROR! the role 'ansible-clickhouse' was not found in /home/alexander/.ansible/roles/clickhouse/molecule/centos_7/roles:/root/.cache/molecule/clickhouse/centos_7/roles:/home/alexander/.ansible/roles:/root/.ansible/roles:/usr/share/ansible/roles:/etc/ansible/roles:/home/alexander/.ansible/roles/clickhouse/molecule/centos_7
+
+The error appears to be in '/home/alexander/.ansible/roles/clickhouse/molecule/centos_7/converge.yml': line 7, column 15, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+      include_role:
+        name: "ansible-clickhouse"
+              ^ here
+```
+У меня эта роль называется clickhouse, исправил в ./centos_7/converge.yml
 2. Перейдите в каталог с ролью vector-role и создайте сценарий тестирования по умолчанию при помощи `molecule init scenario --driver-name docker`.
 3. Добавьте несколько разных дистрибутивов (centos:8, ubuntu:latest) для инстансов и протестируйте роль, исправьте найденные ошибки, если они есть.
 4. Добавьте несколько assert в verify.yml-файл для  проверки работоспособности vector-role (проверка, что конфиг валидный, проверка успешности запуска и др.). 
