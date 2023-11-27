@@ -56,11 +56,76 @@ The offending line appears to be:
       include_role:
         name: "ansible-clickhouse"
               ^ here
+```  
+У меня эта роль называется clickhouse, исправил в ./centos_7/converge.yml  
+Повторил тестирование, длинный вывод вынес [сюда](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/ansible/08-ansible-05-testing/con_out/Molecule_1_3.md)  
+Критичные ошибки, проверка состояния сервиса кликхауса, выдала неизвестное состояние, сервис почему-то не запущен, далее не разбирался. 
+```bash
+TASK [clickhouse : Ensure clickhouse-server.service is enabled: True and state: restarted] ***
+fatal: [centos_7]: FAILED! => {"changed": false, "msg": "Service is in unknown state", "status": {}}
+
+PLAY RECAP *********************************************************************
+centos_7                   : ok=18   changed=7    unreachable=0    failed=1    skipped=6    rescued=0    ignored=0
+
+CRITICAL Ansible return code was 2, command was: ansible-playbook -D --inventory /root/.cache/molecule/clickhouse/centos_7/inventory --skip-tags molecule-notest,notest /home/alexander/.ansible/roles/clickhouse/molecule/centos_7/converge.yml
 ```
-У меня эта роль называется clickhouse, исправил в ./centos_7/converge.yml
-Повторил тестирование, длинный вывод вынес [сюда](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/ansible/08-ansible-05-testing/con_out/Molecule_1_3.md)
-2. Перейдите в каталог с ролью vector-role и создайте сценарий тестирования по умолчанию при помощи `molecule init scenario --driver-name docker`.
-3. Добавьте несколько разных дистрибутивов (centos:8, ubuntu:latest) для инстансов и протестируйте роль, исправьте найденные ошибки, если они есть.
+2. Перейдите в каталог с ролью vector-role и создайте сценарий тестирования по умолчанию при помощи `molecule init scenario --driver-name docker`.  
+
+**Выполнено**
+3. Добавьте несколько разных дистрибутивов (centos:8, ubuntu:latest) для инстансов и протестируйте роль, исправьте найденные ошибки, если они есть.  
+
+**Тестирование**  
+В molecule.yml добавлены два инстанса, centos и ubuntu.  
+В converge.yml
+```yaml
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include vector-role"
+      include_role:
+        name: "vector-role"
+```
+*Ошибка:*
+```bash
+ERROR    Computed fully qualified role name of vector-role does not follow current galaxy requirements.
+Please edit meta/main.yml and assure we can correctly determine full role name:
+
+galaxy_info:
+role_name: my_name  # if absent directory name hosting role is used instead
+namespace: my_galaxy_namespace  # if absent, author is used instead
+```  
+Устранил,добавив role_name и namespace в meta/mail.yml  
+
+*Ошибка:*
+```bash
+ERROR! The handlers/main.yml file for role 'vector-role' must contain a list of tasks
+
+The error appears to be in '/home/alexander/Netology/devops-netology/HomeWork/ansible/08-ansible-04-role/role/vector-role/handlers/main.yml': line 12, column 1, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+handlers:
+^ here
+CRITICAL Ansible return code was 4, command was: ansible-playbook --inventory /root/.cache/molecule/vector-role/default/inventory --skip-tags molecule-notest,notest /home/alexander/Netology/devops-netology/HomeWork/ansible/08-ansible-04-role/role/vector-role/molecule/default/converge.yml
+```
+Устранил, убрал handlers:, должен быть просто список тасок.  
+
+*Ошибка:*
+```bash
+fatal: [instance-2]: FAILED! => {"ansible_facts": {"pkg_mgr": "apt"}, "changed": false, "msg": ["Could not detect which major revision of yum is in use, which is required to determine module backend.", "You should manually specify use_backend to tell the module whether to use the yum (yum3) or dnf (yum4) backend})"]}
+fatal: [instance-1]: FAILED! => {"changed": false, "msg": "Failed to validate GPG signature for vector-0.32.1-1.x86_64: Package vector-0.32.1-1.x86_64.rpm is not signed"}
+```
+Устранил, добавил в ansible.builtin.yum, disable_gpg_check: true  
+ 
+*Ошибка:*
+```bash
+TASK [vector-role : Deploy Vector Config] **************************************
+fatal: [instance-1]: FAILED! => {"changed": false, "checksum": "23bfb6392e65735fa055db503d547118b4e83199", "exit_status": 78, "msg": "failed to validate", "stderr": "2023-11-26T12:06:13.958410Z  WARN vector::app: DEPRECATED The openssl legacy provider provides algorithms and key sizes no longer recommended for use. Set `--openssl-legacy-provider=false` or `VECTOR_OPENSSL_LEGACY_PROVIDER=false` to disable. See https://vector.dev/highlights/2023-08-15-0-32-0-upgrade-guide/#legacy-openssl for details.\n", "stderr_lines": ["2023-11-26T12:06:13.958410Z  WARN vector::app: DEPRECATED The openssl legacy provider provides algorithms and key sizes no longer recommended for use. Set `--openssl-legacy-provider=false` or `VECTOR_OPENSSL_LEGACY_PROVIDER=false` to disable. See https://vector.dev/highlights/2023-08-15-0-32-0-upgrade-guide/#legacy-openssl for details."], "stdout": "Failed to load [\"/root/.ansible/tmp/ansible-tmp-1701000372.6046228-24019-31736439238258/source\"]\n------------------------------------------------------------------------------------------------\nx TOML parse error at line 1, column 4\n  |\n1 | ---\n  |    ^\nexpected `.`, `=`\n\n\n", "stdout_lines": ["Failed to load [\"/root/.ansible/tmp/ansible-tmp-1701000372.6046228-24019-31736439238258/source\"]", "------------------------------------------------------------------------------------------------", "x TOML parse error at line 1, column 4", "  |", "1 | ---", "  |    ^", "expected `.`, `=`", "", ""]}
+```
+Не проходит валидация конфига.
+
 4. Добавьте несколько assert в verify.yml-файл для  проверки работоспособности vector-role (проверка, что конфиг валидный, проверка успешности запуска и др.). 
 5. Запустите тестирование роли повторно и проверьте, что оно прошло успешно.
 5. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
