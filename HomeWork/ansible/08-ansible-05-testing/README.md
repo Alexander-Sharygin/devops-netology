@@ -59,7 +59,7 @@ The offending line appears to be:
 ```  
 У меня эта роль называется clickhouse, исправил в ./centos_7/converge.yml  
 Повторил тестирование, длинный вывод вынес [сюда](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/ansible/08-ansible-05-testing/con_out/Molecule_1_3.md)  
-Критичные ошибки, проверка состояния сервиса кликхауса, выдала неизвестное состояние, сервис почему-то не запущен, далее не разбирался. 
+Критичные ошибки, проверка состояния сервиса кликхауса, выдала неизвестное состояние, сервис почему-то не запущен. 
 ```bash
 TASK [clickhouse : Ensure clickhouse-server.service is enabled: True and state: restarted] ***
 fatal: [centos_7]: FAILED! => {"changed": false, "msg": "Service is in unknown state", "status": {}}
@@ -69,6 +69,7 @@ centos_7                   : ok=18   changed=7    unreachable=0    failed=1    s
 
 CRITICAL Ansible return code was 2, command was: ansible-playbook -D --inventory /root/.cache/molecule/clickhouse/centos_7/inventory --skip-tags molecule-notest,notest /home/alexander/.ansible/roles/clickhouse/molecule/centos_7/converge.yml
 ```
+Не работает внутри контейнера systemd Failed to get D-Bus connection: Operation not permitted
 2. Перейдите в каталог с ролью vector-role и создайте сценарий тестирования по умолчанию при помощи `molecule init scenario --driver-name docker`.  
 
 **Выполнено**
