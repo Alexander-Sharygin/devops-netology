@@ -69,7 +69,11 @@ centos_7                   : ok=18   changed=7    unreachable=0    failed=1    s
 
 CRITICAL Ansible return code was 2, command was: ansible-playbook -D --inventory /root/.cache/molecule/clickhouse/centos_7/inventory --skip-tags molecule-notest,notest /home/alexander/.ansible/roles/clickhouse/molecule/centos_7/converge.yml
 ```
-Не работает внутри контейнера systemd Failed to get D-Bus connection: Operation not permitted
+**"changed": false, "msg": "Service is in unknown state", "status"** 
+Не работает внутри контейнера systemd, ниже у меня в следующем задании та же проблема. Если подключится к контейнеру выполнить systemctl -> Failed to get D-Bus connection: Operation not permitted.  
+Здесь же вроде как выполнено, всё что не обходимо, чтобы systemctl работал, в [описании платформы](https://github.com/AlexeySetevoi/ansible-clickhouse/blob/master/molecule/centos_7/molecule.yml) и [докерфайле](https://github.com/AlexeySetevoi/ansible-clickhouse/blob/master/molecule/resources/Dockerfile.j2)  
+
+Попробовал еще раз на чистой виртуалке qemu/kvm под 
 2. Перейдите в каталог с ролью vector-role и создайте сценарий тестирования по умолчанию при помощи `molecule init scenario --driver-name docker`.  
 
 **Выполнено**
