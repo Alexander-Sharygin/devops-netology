@@ -141,7 +141,7 @@ ok: [centos7] => {
 }
 ````
 5. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.  
-[tag 1.0.3](https://github.com/Alexander-Sharygin/vector-role/tree/1.0.3)
+[tag 1.0.3](https://github.com/Alexander-Sharygin/vector-role/tree/1.0.3)  
 
 
 ### Tox
@@ -195,7 +195,7 @@ molecule init scenario tox --driver-name=podman
     {posargs:molecule test -s tox --destroy always}
 ```
 9. Запустите команду `tox`. Убедитесь, что всё отработало успешно.  
-Не работает, почему не понятно.
+Не работает, почему не понятно.  
 ```bash
 alexander@ThinkBook-14-G2-ARE:~/Netology/devops-netology/HomeWork/ansible/08-ansible-04-role/role/vector-role$ sudo docker run --privileged=True -v /home/alexander/Netology/devops-netology/HomeWork/ansible/08-ansible-04-role/role/vector-role:/opt/vector-role -w /opt/vector-role -it aragast/netology:latest /bin/bash
 [sudo] password for alexander: 
@@ -457,7 +457,7 @@ ERROR:   py39-ansible210: commands failed
 ERROR:   py39-ansible30: commands failed
 ````
 9. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
-[tag 1.0.4](https://github.com/Alexander-Sharygin/vector-role/tree/1.0.4)
+[tag 1.0.4](https://github.com/Alexander-Sharygin/vector-role/tree/1.0.4)  
 После выполнения у вас должно получится два сценария molecule и один tox.ini файл в репозитории. Не забудьте указать в ответе теги решений Tox и Molecule заданий. В качестве решения пришлите ссылку на  ваш репозиторий и скриншоты этапов выполнения задания. 
 
 ## Необязательная часть
