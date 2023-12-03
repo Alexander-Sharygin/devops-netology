@@ -58,7 +58,7 @@ The offending line appears to be:
               ^ here
 ```  
 У меня эта роль называется clickhouse, исправил в ./centos_7/converge.yml  
-[Повторил тестирование.](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/ansible/08-ansible-05-testing/con_out/Molecule_1_3.md)
+[Повторил тестирование.](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/ansible/08-ansible-05-testing/con_out/Molecule_1_3.md)  
 Критичные ошибки, проверка состояния сервиса кликхауса, выдала неизвестное состояние.
 ```bash
 TASK [clickhouse : Ensure clickhouse-server.service is enabled: True and state: restarted] ***
