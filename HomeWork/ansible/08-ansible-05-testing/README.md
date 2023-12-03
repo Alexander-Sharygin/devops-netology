@@ -59,7 +59,7 @@ The offending line appears to be:
 ```  
 У меня эта роль называется clickhouse, исправил в ./centos_7/converge.yml  
 Повторил тестирование, длинный вывод вынес [сюда](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/ansible/08-ansible-05-testing/con_out/Molecule_1_3.md)  
-Критичные ошибки, проверка состояния сервиса кликхауса, выдала неизвестное состояние, сервис почему-то не запущен. 
+Критичные ошибки, проверка состояния сервиса кликхауса, выдала неизвестное состояние.
 ```bash
 TASK [clickhouse : Ensure clickhouse-server.service is enabled: True and state: restarted] ***
 fatal: [centos_7]: FAILED! => {"changed": false, "msg": "Service is in unknown state", "status": {}}
@@ -69,27 +69,18 @@ centos_7                   : ok=18   changed=7    unreachable=0    failed=1    s
 
 CRITICAL Ansible return code was 2, command was: ansible-playbook -D --inventory /root/.cache/molecule/clickhouse/centos_7/inventory --skip-tags molecule-notest,notest /home/alexander/.ansible/roles/clickhouse/molecule/centos_7/converge.yml
 ```
-**"changed": false, "msg": "Service is in unknown state", "status"** 
-Не работает внутри контейнера systemd, ниже у меня в следующем задании та же проблема. Если подключится к контейнеру выполнить systemctl -> Failed to get D-Bus connection: Operation not permitted.  
-Здесь же вроде как выполнено, всё что не обходимо, чтобы systemctl работал, в [описании платформы](https://github.com/AlexeySetevoi/ansible-clickhouse/blob/master/molecule/centos_7/molecule.yml) и [докерфайле](https://github.com/AlexeySetevoi/ansible-clickhouse/blob/master/molecule/resources/Dockerfile.j2)  
+Не известное состояние, из-за не работающего внутри контейнера systemd, ниже у меня в следующем задании та же проблема. Если подключится к контейнеру выполнить systemctl -> Failed to get D-Bus connection: Operation not permitted.  
+Здесь же вроде как автор роли сделал всё, что не обходимо в [описании платформы](https://github.com/AlexeySetevoi/ansible-clickhouse/blob/master/molecule/centos_7/molecule.yml) и [докерфайле](https://github.com/AlexeySetevoi/ansible-clickhouse/blob/master/molecule/resources/Dockerfile.j2), чтобы systemd работал, но нет. Не могу разобраться почему не работает.
+Попробовал еще раз на чистой виртуалке qemu/kvm под ubuntu тоже самое.
 
-Попробовал еще раз на чистой виртуалке qemu/kvm под 
-2. Перейдите в каталог с ролью vector-role и создайте сценарий тестирования по умолчанию при помощи `molecule init scenario --driver-name docker`.  
+3. Перейдите в каталог с ролью vector-role и создайте сценарий тестирования по умолчанию при помощи `molecule init scenario --driver-name docker`.  
 
-**Выполнено**
-3. Добавьте несколько разных дистрибутивов (centos:8, ubuntu:latest) для инстансов и протестируйте роль, исправьте найденные ошибки, если они есть.  
+**Выполнено**  
+
+4. Добавьте несколько разных дистрибутивов (centos:8, ubuntu:latest) для инстансов и протестируйте роль, исправьте найденные ошибки, если они есть.  
 
 **Тестирование**  
-В molecule.yml добавлены два инстанса, centos и ubuntu.  
-В converge.yml
-```yaml
-- name: Converge
-  hosts: all
-  tasks:
-    - name: "Include vector-role"
-      include_role:
-        name: "vector-role"
-```
+В [molecule.yml](https://github.com/Alexander-Sharygin/vector-role/blob/master/molecule/default/molecule.yml) добавлены два инстансы  
 *Ошибка:*
 ```bash
 ERROR    Computed fully qualified role name of vector-role does not follow current galaxy requirements.
@@ -123,16 +114,16 @@ fatal: [instance-2]: FAILED! => {"ansible_facts": {"pkg_mgr": "apt"}, "changed":
 fatal: [instance-1]: FAILED! => {"changed": false, "msg": "Failed to validate GPG signature for vector-0.32.1-1.x86_64: Package vector-0.32.1-1.x86_64.rpm is not signed"}
 ```
 Устранил, добавил в ansible.builtin.yum, disable_gpg_check: true  
- 
-*Ошибка:*
+
 ```bash
-TASK [vector-role : Deploy Vector Config] **************************************
-fatal: [instance-1]: FAILED! => {"changed": false, "checksum": "23bfb6392e65735fa055db503d547118b4e83199", "exit_status": 78, "msg": "failed to validate", "stderr": "2023-11-26T12:06:13.958410Z  WARN vector::app: DEPRECATED The openssl legacy provider provides algorithms and key sizes no longer recommended for use. Set `--openssl-legacy-provider=false` or `VECTOR_OPENSSL_LEGACY_PROVIDER=false` to disable. See https://vector.dev/highlights/2023-08-15-0-32-0-upgrade-guide/#legacy-openssl for details.\n", "stderr_lines": ["2023-11-26T12:06:13.958410Z  WARN vector::app: DEPRECATED The openssl legacy provider provides algorithms and key sizes no longer recommended for use. Set `--openssl-legacy-provider=false` or `VECTOR_OPENSSL_LEGACY_PROVIDER=false` to disable. See https://vector.dev/highlights/2023-08-15-0-32-0-upgrade-guide/#legacy-openssl for details."], "stdout": "Failed to load [\"/root/.ansible/tmp/ansible-tmp-1701000372.6046228-24019-31736439238258/source\"]\n------------------------------------------------------------------------------------------------\nx TOML parse error at line 1, column 4\n  |\n1 | ---\n  |    ^\nexpected `.`, `=`\n\n\n", "stdout_lines": ["Failed to load [\"/root/.ansible/tmp/ansible-tmp-1701000372.6046228-24019-31736439238258/source\"]", "------------------------------------------------------------------------------------------------", "x TOML parse error at line 1, column 4", "  |", "1 | ---", "  |    ^", "expected `.`, `=`", "", ""]}
-```
-Не проходит валидация конфига.
+RUNNING HANDLER [vector-role : Start vector service] ***************************
+fatal: [centos7]: FAILED! => {"changed": false, "msg": "Service is in unknown state", "status": {}}
+```  
+Хендлер не запускает сервис, потому-что в контейнере не работает systemd, не могу решить эту проблему.
 
 4. Добавьте несколько assert в verify.yml-файл для  проверки работоспособности vector-role (проверка, что конфиг валидный, проверка успешности запуска и др.). 
-5. Запустите тестирование роли повторно и проверьте, что оно прошло успешно.
+
+6. Запустите тестирование роли повторно и проверьте, что оно прошло успешно.
 5. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.
 
 ### Tox

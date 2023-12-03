@@ -1,7 +1,7 @@
 ---
 vector_version: "0.32.1"
 vector_rpm_url: "https://packages.timber.io/vector/{{ vector_version }}/vector-{{ vector_version }}-1.x86_64.rpm"
-vector_conf_template: "/home/alexander/Netology/devops-netology/HomeWork/ansible/08-ansible-02-playbook/playbook/templates/vector-conf.j2"
+vector_conf_template: "/home/alexander/Netology/devops-netology/HomeWork/ansible/08-ansible-02-playbook/playbook/templates/vector-conf.toml.j2"
 vector_conf_dest: "/etc/vector/vector.toml"
 
 data_dir: "/var/lib/vector/test"
