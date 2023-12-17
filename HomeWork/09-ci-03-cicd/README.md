@@ -11,6 +11,9 @@
 7.  Проверьте готовность Nexus через [бразуер](http://localhost:8081).
 8. Подключитесь под admin\admin123, поменяйте пароль, сохраните анонимный доступ.  
  **Выполнено**
+С помощью terraform создаем инфраструктуру из двух виртуалок
+![ya_cloud](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/cicd-01.png)
+
 
 ## Знакомоство с SonarQube
 
