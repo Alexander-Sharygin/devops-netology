@@ -13,8 +13,8 @@
  **Выполнено**
 С помощью terraform создаем инфраструктуру из двух виртуалок
 ![ya_cloud](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/cicd-01.png)
-
-
+![sonarcube](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/cicd-03.png)
+![nexus](https://github.com/Alexander-Sharygin/devops-netology/blob/main/HomeWork/img/cicd-02.png)
 ## Знакомоство с SonarQube
 
 ### Основная часть
@@ -27,8 +27,7 @@
 6. Посмотрите результат в интерфейсе.
 7. Исправьте ошибки, которые он выявил, включая warnings.
 8. Запустите анализатор повторно — проверьте, что QG пройдены успешно.
-9. Сделайте скриншот успешного прохождения анализа, приложите к решению ДЗ.  
-
+9. Сделайте скриншот успешного прохождения анализа, приложите к решению ДЗ.
 **Выполнено**
 ````bash
 INFO: Scanner configuration file: /home/alexander/sonar-scanner-5.0.1.3006-linux/conf/sonar-scanner.properties
