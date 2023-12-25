@@ -140,6 +140,352 @@ ok: [centos7] => {
     "msg": "All assertions passed"
 }
 ````
+
+**В связи с тем, что работу systemd наладить не удалось в докере, изменил роль, запускаем бинарник вектора.** 
+Запускаем тестирование, проверка конфига вектора, и наличие запущенного процесса вектора проходит.
+```bash
+root@ThinkBook-14-G2-ARE:/home/alexander/Netology/devops-netology/HomeWork/ansible/08-ansible-04-role/role/vector-role# molecule test
+WARNING  Driver docker does not provide a schema.
+INFO     default scenario test matrix: dependency, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
+INFO     Performing prerun with role_name_check=0...
+INFO     Using /root/.ansible/roles/al_sharygin.vector_role symlink to current repository in order to enable Ansible to find the role using its expected full name.
+INFO     Running default > dependency
+WARNING  Skipping, missing the requirements file.
+WARNING  Skipping, missing the requirements file.
+INFO     Running default > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running default > destroy
+INFO     Sanity checks: 'docker'
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Populate instance config] ************************************************
+ok: [localhost]
+
+TASK [Dump instance config] ****************************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Running default > syntax
+
+playbook: /home/alexander/Netology/devops-netology/HomeWork/ansible/08-ansible-04-role/role/vector-role/molecule/default/converge.yml
+INFO     Running default > create
+
+PLAY [Create] ******************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Log into a Docker registry] **********************************************
+skipping: [localhost] => (item=None) 
+skipping: [localhost]
+
+TASK [Check presence of custom Dockerfiles] ************************************
+ok: [localhost] => (item={'image': 'docker.io/pycontribs/centos:7', 'name': 'centos7', 'pre_build_image': True, 'privileged': True})
+
+TASK [Create Dockerfiles from image names] *************************************
+skipping: [localhost] => (item={'image': 'docker.io/pycontribs/centos:7', 'name': 'centos7', 'pre_build_image': True, 'privileged': True}) 
+skipping: [localhost]
+
+TASK [Synchronization the context] *********************************************
+skipping: [localhost] => (item={'image': 'docker.io/pycontribs/centos:7', 'name': 'centos7', 'pre_build_image': True, 'privileged': True}) 
+skipping: [localhost]
+
+TASK [Discover local Docker images] ********************************************
+ok: [localhost] => (item={'changed': False, 'skipped': True, 'skip_reason': 'Conditional result was False', 'false_condition': 'not item.pre_build_image | default(false)', 'item': {'image': 'docker.io/pycontribs/centos:7', 'name': 'centos7', 'pre_build_image': True, 'privileged': True}, 'ansible_loop_var': 'item', 'i': 0, 'ansible_index_var': 'i'})
+
+TASK [Build an Ansible compatible image (new)] *********************************
+skipping: [localhost] => (item=molecule_local/docker.io/pycontribs/centos:7) 
+skipping: [localhost]
+
+TASK [Create docker network(s)] ************************************************
+skipping: [localhost]
+
+TASK [Determine the CMD directives] ********************************************
+ok: [localhost] => (item={'image': 'docker.io/pycontribs/centos:7', 'name': 'centos7', 'pre_build_image': True, 'privileged': True})
+
+TASK [Create molecule instance(s)] *********************************************
+changed: [localhost] => (item=centos7)
+
+TASK [Wait for instance(s) creation to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) creation to complete (300 retries left).
+changed: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j803883866346.88013', 'results_file': '/root/.ansible_async/j803883866346.88013', 'changed': True, 'item': {'image': 'docker.io/pycontribs/centos:7', 'name': 'centos7', 'pre_build_image': True, 'privileged': True}, 'ansible_loop_var': 'item'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=6    changed=2    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0
+
+INFO     Running default > prepare
+WARNING  Skipping, prepare playbook not configured.
+INFO     Running default > converge
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [centos7]
+
+TASK [Include vector-role] *****************************************************
+
+TASK [vector-role : Create directory for vector data "/var/lib/vector/test"] ***
+changed: [centos7]
+
+TASK [vector-role : Get vector rpm distrib] ************************************
+changed: [centos7]
+
+TASK [vector-role : Install vector rpm packages] *******************************
+changed: [centos7]
+
+TASK [vector-role : Deploy Vector Config] **************************************
+changed: [centos7]
+
+RUNNING HANDLER [vector-role : Start vector service] ***************************
+changed: [centos7]
+
+PLAY RECAP *********************************************************************
+centos7                    : ok=6    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Running default > idempotence
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [centos7]
+
+TASK [Include vector-role] *****************************************************
+
+TASK [vector-role : Create directory for vector data "/var/lib/vector/test"] ***
+ok: [centos7]
+
+TASK [vector-role : Get vector rpm distrib] ************************************
+ok: [centos7]
+
+TASK [vector-role : Install vector rpm packages] *******************************
+ok: [centos7]
+
+TASK [vector-role : Deploy Vector Config] **************************************
+ok: [centos7]
+
+PLAY RECAP *********************************************************************
+centos7                    : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Idempotence completed successfully.
+INFO     Running default > side_effect
+WARNING  Skipping, side effect playbook not configured.
+INFO     Running default > verify
+INFO     Running Ansible Verifier
+
+PLAY [Verify] ******************************************************************
+
+TASK [Validate vector configuration] *******************************************
+ok: [centos7]
+
+TASK [Check vector process PID] ************************************************
+changed: [centos7]
+
+TASK [Assert vector configuragtion] ********************************************
+ok: [centos7] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Check vector service] ****************************************************
+ok: [centos7] => {
+    "changed": false,
+    "msg": "Service is running"
+}
+
+PLAY RECAP *********************************************************************
+centos7                    : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Verifier completed successfully.
+INFO     Running default > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running default > destroy
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Populate instance config] ************************************************
+ok: [localhost]
+
+TASK [Dump instance config] ****************************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Pruning extra files from scenario ephemeral directory
+root@ThinkBook-14-G2-ARE:/home/alexander/Netology/devops-netology/HomeWork/ansible/08-ansible-04-role/role/vector-role# molecule test
+WARNING  Driver docker does not provide a schema.
+INFO     default scenario test matrix: dependency, cleanup, destroy, syntax, create, prepare, converge, idempotence, side_effect, verify, cleanup, destroy
+INFO     Performing prerun with role_name_check=0...
+INFO     Using /root/.ansible/roles/al_sharygin.vector_role symlink to current repository in order to enable Ansible to find the role using its expected full name.
+INFO     Running default > dependency
+WARNING  Skipping, missing the requirements file.
+WARNING  Skipping, missing the requirements file.
+INFO     Running default > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running default > destroy
+INFO     Sanity checks: 'docker'
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Populate instance config] ************************************************
+ok: [localhost]
+
+TASK [Dump instance config] ****************************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Running default > syntax
+
+playbook: /home/alexander/Netology/devops-netology/HomeWork/ansible/08-ansible-04-role/role/vector-role/molecule/default/converge.yml
+INFO     Running default > create
+
+PLAY [Create] ******************************************************************
+
+TASK [Set async_dir for HOME env] **********************************************
+ok: [localhost]
+
+TASK [Log into a Docker registry] **********************************************
+skipping: [localhost] => (item=None) 
+skipping: [localhost]
+
+TASK [Check presence of custom Dockerfiles] ************************************
+ok: [localhost] => (item={'image': 'docker.io/pycontribs/centos:7', 'name': 'centos7', 'pre_build_image': True, 'privileged': True})
+
+TASK [Create Dockerfiles from image names] *************************************
+skipping: [localhost] => (item={'image': 'docker.io/pycontribs/centos:7', 'name': 'centos7', 'pre_build_image': True, 'privileged': True}) 
+skipping: [localhost]
+
+TASK [Synchronization the context] *********************************************
+skipping: [localhost] => (item={'image': 'docker.io/pycontribs/centos:7', 'name': 'centos7', 'pre_build_image': True, 'privileged': True}) 
+skipping: [localhost]
+
+TASK [Discover local Docker images] ********************************************
+ok: [localhost] => (item={'changed': False, 'skipped': True, 'skip_reason': 'Conditional result was False', 'false_condition': 'not item.pre_build_image | default(false)', 'item': {'image': 'docker.io/pycontribs/centos:7', 'name': 'centos7', 'pre_build_image': True, 'privileged': True}, 'ansible_loop_var': 'item', 'i': 0, 'ansible_index_var': 'i'})
+
+TASK [Build an Ansible compatible image (new)] *********************************
+skipping: [localhost] => (item=molecule_local/docker.io/pycontribs/centos:7) 
+skipping: [localhost]
+
+TASK [Create docker network(s)] ************************************************
+skipping: [localhost]
+
+TASK [Determine the CMD directives] ********************************************
+ok: [localhost] => (item={'image': 'docker.io/pycontribs/centos:7', 'name': 'centos7', 'pre_build_image': True, 'privileged': True})
+
+TASK [Create molecule instance(s)] *********************************************
+changed: [localhost] => (item=centos7)
+
+TASK [Wait for instance(s) creation to complete] *******************************
+FAILED - RETRYING: [localhost]: Wait for instance(s) creation to complete (300 retries left).
+ok: [localhost] => (item={'failed': 0, 'started': 1, 'finished': 0, 'ansible_job_id': 'j363438638498.90828', 'results_file': '/root/.ansible_async/j363438638498.90828', 'changed': True, 'item': {'image': 'docker.io/pycontribs/centos:7', 'name': 'centos7', 'pre_build_image': True, 'privileged': True}, 'ansible_loop_var': 'item'})
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=6    changed=1    unreachable=0    failed=0    skipped=5    rescued=0    ignored=0
+
+INFO     Running default > prepare
+WARNING  Skipping, prepare playbook not configured.
+INFO     Running default > converge
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [centos7]
+
+TASK [Include vector-role] *****************************************************
+
+TASK [vector-role : Create directory for vector data "/var/lib/vector/test"] ***
+ok: [centos7]
+
+TASK [vector-role : Get vector rpm distrib] ************************************
+ok: [centos7]
+
+TASK [vector-role : Install vector rpm packages] *******************************
+ok: [centos7]
+
+TASK [vector-role : Deploy Vector Config] **************************************
+ok: [centos7]
+
+PLAY RECAP *********************************************************************
+centos7                    : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Running default > idempotence
+
+PLAY [Converge] ****************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [centos7]
+
+TASK [Include vector-role] *****************************************************
+
+TASK [vector-role : Create directory for vector data "/var/lib/vector/test"] ***
+ok: [centos7]
+
+TASK [vector-role : Get vector rpm distrib] ************************************
+ok: [centos7]
+
+TASK [vector-role : Install vector rpm packages] *******************************
+ok: [centos7]
+
+TASK [vector-role : Deploy Vector Config] **************************************
+ok: [centos7]
+
+PLAY RECAP *********************************************************************
+centos7                    : ok=5    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Idempotence completed successfully.
+INFO     Running default > side_effect
+WARNING  Skipping, side effect playbook not configured.
+INFO     Running default > verify
+INFO     Running Ansible Verifier
+
+PLAY [Verify] ******************************************************************
+
+TASK [Validate vector configuration] *******************************************
+ok: [centos7]
+
+TASK [Check vector process PID] ************************************************
+changed: [centos7]
+
+TASK [Assert vector configuragtion] ********************************************
+ok: [centos7] => {
+    "changed": false,
+    "msg": "All assertions passed"
+}
+
+TASK [Check vector service] ****************************************************
+ok: [centos7] => {
+    "changed": false,
+    "msg": "Service is running"
+}
+
+PLAY RECAP *********************************************************************
+centos7                    : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+
+INFO     Verifier completed successfully.
+INFO     Running default > cleanup
+WARNING  Skipping, cleanup playbook not configured.
+INFO     Running default > destroy
+
+PLAY [Destroy] *****************************************************************
+
+TASK [Populate instance config] ************************************************
+ok: [localhost]
+
+TASK [Dump instance config] ****************************************************
+skipping: [localhost]
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=0    skipped=1    rescued=0    ignored=0
+
+INFO     Pruning extra files from scenario ephemeral directory
+```
+
+
 5. Добавьте новый тег на коммит с рабочим сценарием в соответствии с семантическим версионированием.  
 [tag 1.0.3](https://github.com/Alexander-Sharygin/vector-role/tree/1.0.3)  
 
